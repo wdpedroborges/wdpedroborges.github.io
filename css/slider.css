@@ -1,6 +1,7 @@
 .container-slider-dividido {
 	width: 100vw;
 	position: relative;
+	overflow-x: hidden;
 }
 
 .container-slider-dividido h2 {
