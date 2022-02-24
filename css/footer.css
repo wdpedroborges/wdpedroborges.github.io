@@ -1,0 +1,16 @@
+footer {
+	background: #4b3832;
+	color: #fff4e6;
+	text-align: center;
+	padding: 1rem;
+}
+
+footer h2 {
+	font-size: 2rem;
+}
+
+@media (max-width: 1080px) {
+	footer h2 {
+		font-size: 1rem;
+	}
+}

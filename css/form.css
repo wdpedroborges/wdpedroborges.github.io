@@ -1,0 +1,128 @@
+#contato {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100vh;
+}
+
+#contato img {
+	display: block;
+	width: 51.2%;
+	height: 100%;
+}
+
+form {
+	--primeira-cor: #854442;
+	--segunda-cor: #4b3832;
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.divInput {
+	position: relative;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.divInput i {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	font-size: 1.5rem;
+	color: #ccc;
+}
+
+input {
+	padding: 1rem;
+	border: none;
+	padding-left: 2rem;
+	font-size: 1rem;
+	margin-top: 0;
+	width: 100%;
+}
+
+input:focus {
+	outline: none;
+	border: none;
+}
+
+.border-input {
+	display: block;
+	height: 1px;
+	width: 100%;
+	background: #ccc;
+}
+
+.border-input::after {
+	content: '';
+	display: block;
+	width: 0;
+	background: linear-gradient(to right, var(--primeira-cor), var(--segunda-cor));
+	height: 1px;
+	transition: .5s ease-in-out;
+}
+
+input:focus + .border-input:after {
+	width: 100%;
+}
+
+input:focus + .border-input + i {
+	color: #4b3832;
+}
+
+label {
+	position: absolute;
+	top: 50%;
+	left: 2rem;
+	transform: translateY(-50%);
+	color: #606060;
+	cursor: text;
+	animation: desceLabel .5s ease-in-out;
+}
+
+input:focus ~ label, input:not(:placeholder-shown) ~ label {
+	animation: sobeLabel .5s ease-in-out;
+	top: 0;
+	color: #4b3832;
+	cursor: pointer;
+}
+
+/* button */
+form button {
+	padding: 1em;
+	font-size: 1rem;
+	display: block;
+	border-radius: 1em;
+	border: none;
+	cursor: pointer;
+	background: linear-gradient(to right, var(--primeira-cor), var(--segunda-cor));
+	color: #fff;
+}
+
+form button:hover {
+	background: linear-gradient(to left, var(--primeira-cor), var(--segunda-cor));
+}
+
+@keyFrames sobeLabel {
+	from {
+		top: 50%;
+	}
+	to {
+		top: 0;
+	}
+}
+
+@keyFrames desceLabel {
+	from {
+		top: 0;
+	}
+	to {
+		top: 50%;
+	}
+}

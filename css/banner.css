@@ -1,0 +1,53 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.banner {
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	background-color: #000;
+	background: linear-gradient(to right, #be9b7b, rgba(75, 56, 50, .75)), url('../img/img-banner.jpg');
+	overflow: hidden;
+	animation: moveBgBanner 5s ease-in-out infinite;
+}
+
+.banner .texto {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	text-align: center;
+}
+
+.banner .texto p {
+	font-size: 2rem;
+	max-width: 45ch;
+	text-align: center;
+}
+
+@media (max-width: 1000px) {
+	.banner .texto h2 {
+		font-size: 2rem;
+	}
+	.banner .texto p {
+		font-size: 1rem;
+	}
+}
+
+@keyframes moveBgBanner {
+	0% {
+		background-position: 50% 0%;
+	}
+	50% {
+		background-position: 50% 25%;
+	}
+	75% {
+		background-position: 30% 100%;
+	}
+	100% {
+		background-position: 50% 0%;
+	}
+}
