@@ -23,20 +23,20 @@
 	--cor-tema-muito-escura-transparente: rgba(57, 109, 124, .75);*/
 
 	/* Paleta Sonserina */
-/*	--cor-tema-escura: #1a472a;
+	--cor-tema-escura: #1a472a;
 	--cor-tema-muito-escura: #000000;
 	--cor-tema-chamativa: #2a623d;
 	--cor-tema-clara: #5d5d5d;
 	--cor-tema-muito-clara: #aaaaaa;	
-	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);*/
+	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);
 
 	/* Paleta Technology */
-	--cor-tema-escura: #02577a;
+/*	--cor-tema-escura: #02577a;
 	--cor-tema-muito-escura: #01303f;
 	--cor-tema-chamativa: #02a9f7;
 	--cor-tema-clara: #89d6fb;
 	--cor-tema-muito-clara: #d4f0fc	;	
-	--cor-tema-muito-escura-transparente: rgba(1, 48, 63, .75);
+	--cor-tema-muito-escura-transparente: rgba(1, 48, 63, .75);*/
 
 	--altura-menu: 10vh;
 	--color: var(--cor-tema-muito-clara);
