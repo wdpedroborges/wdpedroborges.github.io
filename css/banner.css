@@ -22,6 +22,14 @@ body {
 	text-align: center;
 }
 
+.banner .texto h2 {
+	color: #fff;
+}
+
+.banner .texto h2:after {
+	display: none;
+}
+
 .banner .texto p {
 	font-size: 2rem;
 	max-width: 45ch;

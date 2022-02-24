@@ -30,7 +30,6 @@
 	align-items: center;
 	background-color: var(--bg);
 	user-select: none;
-	animation: fadeIn 1.5s;
 	z-index: 200;
 }
 
@@ -104,18 +103,6 @@
 	z-index: 100;
 }
 
-.primeiro {
-	animation: animacaoItem 1.75s ease-in;
-}
-
-.segundo {
-	animation: animacaoItem 1.5s ease-in;
-}
-
-.terceiro {
-	animation: animacaoItem 1s ease-in;
-}
-
 .projetos {
 	animation: projetos 1s infinite ease-out;
 }
@@ -186,9 +173,5 @@
 	#toggleMenu {
 		display: block;
 		margin-right: 2rem;
-	}
-
-	.primeiro, .segundo, .terceiro {
-		animation: none;
 	}
 }
