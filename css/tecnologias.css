@@ -2,6 +2,7 @@
 	--cor-tema: var(--cor-tema-escura);
 	--cor-complementar: var(--cor-tema-muito-clara);
 	position: relative;
+	z-index: 100;
 }
 
 #bg-sobre {
