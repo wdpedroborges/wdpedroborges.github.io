@@ -8,13 +8,13 @@ const VELOCIDADE_SCROLL = 17;
 
 let aberto = false;
 toggleMenu.addEventListener('click', () => {
-	if (listaMenu.style.transform === 'translateY(0%)') {
-		listaMenu.style.transform = 'translateY(120%)';
+	if (listaMenu.style.transform === 'translateX(0%)') {
+		listaMenu.style.transform = 'translateX(-100%)';
 		toggleMenu.classList.remove('bi-x');
 		toggleMenu.classList.add('bi-list');
 		aberto = false;
 	} else {
-		listaMenu.style.transform = 'translateY(0%)';
+		listaMenu.style.transform = 'translateX(0%)';
 		toggleMenu.classList.remove('bi-list');
 		toggleMenu.classList.add('bi-x');
 		aberto = true;
@@ -45,10 +45,12 @@ document.addEventListener('scroll', e => {
 		btnSubir.style.display = 'none';
 	}
 	// para tirar o menu da tela
-	if (scrollTop > scrollTopAnterior) {
-		menu.style.opacity = '.75';
-	} else {
-		menu.style.opacity = '1';
+	if (!aberto) {
+		if (scrollTop > scrollTopAnterior) {
+			menu.style.opacity = '.75';
+		} else {
+			menu.style.opacity = '1';
+		}
 	}
 	scrollTopAnterior = scrollTop;
 });
