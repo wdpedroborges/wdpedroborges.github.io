@@ -79,4 +79,18 @@
 	.coluna .texto p {
 		margin-left: 0;
 	}
+
+	.linha .coluna {
+		display: flex;
+		flex-direction: column;
+		height: auto;
+	}
+
+	.coluna .texto {
+		height: 50vh;
+	}
+
+	.container-slider-dividido img {
+		height: 50vh;
+	}
 }

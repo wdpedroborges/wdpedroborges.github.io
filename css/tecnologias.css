@@ -52,10 +52,10 @@
 	background: #fff;
 	color: var(--cor-tema);
 	border: 1px solid var(--cor-tema);
-	padding: 1em;
+	padding: 1rem;
 	border-radius: 1em;
 	margin: 0.5rem;
-	width: 80%;
+	width: 90%;
 	text-align: center;
 }
 .alinhados ul li:nth-child(odd) {

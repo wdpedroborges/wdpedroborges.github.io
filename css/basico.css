@@ -89,6 +89,25 @@ h2:after {
   width: 10%;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--cor-tema-muito-clara);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--cor-tema-muito-escura);
+}
+
+::-moz-selection { /* para Firefox */
+    background-color: var(--cor-tema-muito-clara);
+    background: var(--cor-tema-muito-escura);
+  }
+  
+::selection {
+    color: var(--cor-tema-muito-clara);;
+    background: var(--cor-tema-muito-escura);
+}
+
 /* animações */
 @keyframes fadeIn {
 	from {

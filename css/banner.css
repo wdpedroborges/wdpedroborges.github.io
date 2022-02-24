@@ -11,6 +11,7 @@ body {
 	background: linear-gradient(to right, var(--cor-tema-escura), var(--cor-tema-muito-escura-transparente)), url('../img/img-banner.jpg');
 	overflow: hidden;
 	animation: moveBgBanner 5s ease-in-out infinite;
+	background-attachment: fixed;
 }
 
 .banner .texto {
