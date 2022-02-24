@@ -12,15 +12,20 @@
 }
 
 form {
-	--primeira-cor: #854442;
-	--segunda-cor: #4b3832;
-	width: 50%;
+	--primeira-cor: var(--cor-tema-muito-escura);
+	--segunda-cor: var(--cor-tema-escura);
+	width: 75%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding: 1rem;
+}
+
+form h2 {
+	width: 100%;
+	text-align: center;
 }
 
 .divInput {
@@ -73,7 +78,7 @@ input:focus + .border-input:after {
 }
 
 input:focus + .border-input + i {
-	color: #4b3832;
+	color: var(--cor-tema-escura);
 }
 
 label {
@@ -89,7 +94,7 @@ label {
 input:focus ~ label, input:not(:placeholder-shown) ~ label {
 	animation: sobeLabel .5s ease-in-out;
 	top: 0;
-	color: #4b3832;
+	color: var(--cor-tema-escura);
 	cursor: pointer;
 }
 

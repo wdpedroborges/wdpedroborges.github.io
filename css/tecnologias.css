@@ -1,6 +1,6 @@
 #sobre {
-	--cor-tema: #4b3832;
-	--cor-complementar: #fff4e6;
+	--cor-tema: var(--cor-tema-escura);
+	--cor-complementar: var(--cor-tema-muito-clara);
 	position: relative;
 }
 

@@ -1,6 +1,6 @@
 footer {
-	background: #4b3832;
-	color: #fff4e6;
+	background: var(--cor-tema-escura);
+	color: var(--cor-tema-muito-clara);
 	text-align: center;
 	padding: 1rem;
 }

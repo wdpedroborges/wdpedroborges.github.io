@@ -8,7 +8,7 @@ body {
 	width: 100%;
 	position: relative;
 	background-color: #000;
-	background: linear-gradient(to right, #be9b7b, rgba(75, 56, 50, .75)), url('../img/img-banner.jpg');
+	background: linear-gradient(to right, var(--cor-tema-escura), var(--cor-tema-muito-escura-transparente)), url('../img/img-banner.jpg');
 	overflow: hidden;
 	animation: moveBgBanner 5s ease-in-out infinite;
 }

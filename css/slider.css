@@ -1,4 +1,5 @@
 .container-slider-dividido {
+	--altura-slider: 600px;
 	width: 100vw;
 	position: relative;
 	overflow: hidden;
@@ -19,10 +20,10 @@
 .botao-controle {
 	width: 5px;
 	height: 5px;
-	border: 2px solid #fff4e6;
+	border: 2px solid var(--cor-tema-muito-clara);
 	padding: .5rem;
 	border-radius: 50%;
-	background-color: #854442;
+	background-color: var(--cor-tema-chamativa);
 	cursor: pointer;
 }
 
@@ -32,7 +33,10 @@
 
 .container-slider-dividido img {
 	width: 100%;
-	height: 500px;
+	height: var(--altura-slider);
+  	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  	filter: grayscale(100%);
+  	object-fit: fill;
 }
 
 .linha {
@@ -44,15 +48,15 @@
 .linha .coluna {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	height: 500px;
+	height: var(--altura-slider);
 }
 
 .coluna .texto {
-	height: 500px;
+	height: var(--altura-slider);
 	padding: 1rem;
 	text-align: center;
-	background-color: #4b3832;
-	color: #fff4e6;
+	background-color: var(--cor-tema-escura);
+	color: var(--cor-tema-muito-clara);
 }
 
 .coluna .texto p {

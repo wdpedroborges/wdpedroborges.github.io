@@ -5,6 +5,48 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+:root {
+	/* Paleta Capuccino */
+/*	--cor-tema-escura: #4b3832;
+	--cor-tema-muito-escura: #3c2f2f;
+	--cor-tema-chamativa: #854442;
+	--cor-tema-clara: #be9b7b;
+	--cor-tema-muito-clara: #fff4e6;
+	--cor-tema-muito-escura-transparente: rgba(60, 47, 47, .75);*/
+
+	/* Paleta IceBlue */
+/*	--cor-tema-escura: #257ca3;
+	--cor-tema-muito-escura: #396d7c;
+	--cor-tema-chamativa: #a2d2df;
+	--cor-tema-clara: #baf2ef;
+	--cor-tema-muito-clara: #dcf3ff;	
+	--cor-tema-muito-escura-transparente: rgba(57, 109, 124, .75);*/
+
+	/* Paleta Sonserina */
+/*	--cor-tema-escura: #1a472a;
+	--cor-tema-muito-escura: #000000;
+	--cor-tema-chamativa: #2a623d;
+	--cor-tema-clara: #5d5d5d;
+	--cor-tema-muito-clara: #aaaaaa;	
+	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);*/
+
+	/* Paleta Technology */
+	--cor-tema-escura: #02577a;
+	--cor-tema-muito-escura: #01303f;
+	--cor-tema-chamativa: #02a9f7;
+	--cor-tema-clara: #89d6fb;
+	--cor-tema-muito-clara: #d4f0fc	;	
+	--cor-tema-muito-escura-transparente: rgba(1, 48, 63, .75);
+
+	--altura-menu: 10vh;
+	--color: var(--cor-tema-muito-clara);
+	--bg: var(--cor-tema-muito-escura);
+	--bg-hover: var(--cor-tema-chamativa);
+	--color-hover: var(--cor-tema-muito-escura);
+	--bg-menu-responsivo: var(--cor-tema-escura);
+	--color-btn-subir: var(--cor-tema-chamativa);
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -33,12 +75,12 @@ i {
 h2 {
 	font-size: 3rem;
 	position: relative;
-	color: #3c2f2f;
+	color: var(--cor-tema-muito-escura);
 }
 
 h2:after {
   content: "";
-  background: #854442;
+  background: var(--cor-tema-chamativa);
   position: absolute;
   bottom: 0;
   left: 50%;

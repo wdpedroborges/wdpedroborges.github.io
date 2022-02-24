@@ -1,22 +1,13 @@
-:root {
-	--altura-menu: 10vh;
-	--color: #fff;
-	--bg: #3c2f2f;
-	--bg-hover: #854442;
-	--bg-menu-responsivo: #4b3832;
-	--color-btn-subir: #854442;
-}
-
 .cor-1 {
-	color: #fff4e6;
+	color: var(--cor-tema-muito-clara);
 }
 
 .cor-2 {
-	color: #854442;
+	color: var(--cor-tema-chamativa);
 }
 
 .cor-3 {
-	color: #fff4e6;
+	color: var(--cor-tema-muito-clara);
 }
 
 #menu {
@@ -86,6 +77,10 @@
 	height: 100%;
 	font-size: 1.25rem;
 	text-align: center;
+}
+
+#menu ul li:hover > a {
+	color: var(--color-hover);
 }
 
 /* botão de subir */
