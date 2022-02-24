@@ -53,6 +53,10 @@ body {
 	overflow-x: hidden;
 }
 
+section {
+	z-index: -1;
+}
+
 p {
 	max-width: 45ch;
 	line-height: 1.5;

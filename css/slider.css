@@ -3,6 +3,7 @@
 	width: 100vw;
 	position: relative;
 	overflow: hidden;
+	z-index: -1;
 }
 
 .container-slider-dividido h2 {
@@ -37,6 +38,12 @@
   	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   	filter: grayscale(100%);
   	object-fit: fill;
+}
+
+.container-slider-dividido img:hover {
+  	-webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  	filter: grayscale(0%);
+  	transition: 1s;
 }
 
 .linha {

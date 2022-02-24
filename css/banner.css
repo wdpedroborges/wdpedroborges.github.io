@@ -12,6 +12,7 @@ body {
 	overflow: hidden;
 	animation: moveBgBanner 5s ease-in-out infinite;
 	background-attachment: fixed;
+	z-index: -1;
 }
 
 .banner .texto {

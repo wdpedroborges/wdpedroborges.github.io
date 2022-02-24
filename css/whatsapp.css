@@ -1,0 +1,37 @@
+#whatsapp {
+	position: fixed;
+	bottom: 2%;
+	left: 1%;
+}
+
+#whatsapp img {
+	display: block;
+	width: 50px;
+	height: auto;
+	cursor: pointer;
+	z-index: 1200;
+}
+
+#whatsapp img:hover {
+	transform: scale(1.5) translate(25%, -25%);
+	transition: .5s;
+}
+
+#balaoWhatsapp {
+	background: var(--cor-tema-muito-escura);
+	color: var(--cor-tema-muito-clara);
+	position: absolute;
+	width: 300px;
+	top: -200%;
+	left: 150%;
+	padding: 1rem;
+	border-radius: 1rem 1rem 1rem 0;
+	border: 1px solid var(--cor-tema-muito-clara);
+	text-align: center;
+	z-index: 1000;
+	display: none;
+}
+
+#whatsapp a:hover + #balaoWhatsapp {
+	display: block;
+}
