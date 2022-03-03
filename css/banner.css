@@ -57,6 +57,7 @@ body {
 		font-size: 1.5rem;
 	}
 	#setaBanner {
+		bottom: 2rem;
 		font-size: 2.75rem;
 	}
 }

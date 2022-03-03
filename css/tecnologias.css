@@ -59,9 +59,9 @@
 	animation: rodaUl 5s ease-in-out infinite;
 }
 .alinhados ul li {
-	background: var(--cor-tema-muito-clara);
+	background: #fff;
 	color: var(--cor-tema-muito-escura);
-	border: 1px solid var(--cor-tema);
+	border: 1px solid #fff;
 	padding: 1rem;
 	border-radius: 1em;
 	margin: 0.5rem;
@@ -83,7 +83,7 @@
 }
 
 .alinhados ul li:nth-child(odd):hover {
-	background: var(--cor-tema-muito-clara);
+	background: #fff;
 	color: var(--cor-tema-muito-escura);
 	outline: 1px solid var(--cor-tema-muito-escura);
 	cursor: pointer;

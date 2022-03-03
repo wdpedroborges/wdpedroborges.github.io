@@ -35,3 +35,10 @@
 #whatsapp a:hover + #balaoWhatsapp {
 	display: block;
 }
+
+@media (max-width: 1000px) {
+	#whatsapp {
+		bottom: 5%;
+		left: 5%;
+	}
+}
