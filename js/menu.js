@@ -29,7 +29,7 @@ for (const link of links) {
 function clickHandler(e) {
 	e.preventDefault();
 	const href = this.getAttribute("href");
-	const offsetTop = document.querySelector(href).offsetTop - 100;
+	const offsetTop = document.querySelector(href).offsetTop - 50;
 	let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
 	scrollSuave(scrollTop, offsetTop, VELOCIDADE_SCROLL);
 }

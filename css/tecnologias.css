@@ -2,7 +2,7 @@
 	--cor-tema: var(--cor-tema-escura);
 	--cor-complementar: var(--cor-tema-muito-clara);
 	position: relative;
-	z-index: 100;
+	z-index: 2;
 }
 
 #bg-sobre {
@@ -34,6 +34,15 @@
 	line-height: 1.5;
 	text-align: justify;
 	font-size: 1.25rem;
+	background-color: var(--cor-tema-muito-escura);
+	color: var(--cor-tema-muito-clara);
+	padding: 2rem;
+	border-radius: 1rem 5rem;
+}
+.alinhados .texto p:hover {
+	transform: rotateZ(5deg);
+	transition: 1s;
+	cursor: pointer;
 }
 .perspective {
 	perspective: 1000px;
@@ -50,8 +59,8 @@
 	animation: rodaUl 5s ease-in-out infinite;
 }
 .alinhados ul li {
-	background: #fff;
-	color: var(--cor-tema);
+	background: var(--cor-tema-muito-clara);
+	color: var(--cor-tema-muito-escura);
 	border: 1px solid var(--cor-tema);
 	padding: 1rem;
 	border-radius: 1em;
@@ -60,13 +69,25 @@
 	text-align: center;
 }
 .alinhados ul li:nth-child(odd) {
-	background-color: var(--cor-tema);
+	background-color: var(--cor-tema-muito-escura);
 	color: #fff;
 	border: none;
 }
+
 .alinhados ul li:hover {
-	opacity: .75;
+	background: var(--cor-tema-muito-escura);
+	color: var(--cor-tema-muito-clara);
 	cursor: pointer;
+	transform: rotateZ(10deg);
+	transition: 1s;
+}
+
+.alinhados ul li:nth-child(odd):hover {
+	background: var(--cor-tema-muito-clara);
+	color: var(--cor-tema-muito-escura);
+	outline: 1px solid var(--cor-tema-muito-escura);
+	cursor: pointer;
+	transform: rotateZ(-10deg);
 }
 
 @keyframes rodaUl {

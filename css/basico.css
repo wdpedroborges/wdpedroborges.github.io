@@ -39,12 +39,12 @@
 	--cor-tema-muito-escura-transparente: rgba(1, 48, 63, .75);*/
 
 	/* Paleta Grifinória */
-/*	--cor-tema-escura: #740001;
+	--cor-tema-escura: #740001;
 	--cor-tema-muito-escura: #000000;
 	--cor-tema-chamativa: #ae0001;
 	--cor-tema-clara: #d3a625;
 	--cor-tema-muito-clara: #eeba30;	
-	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);*/
+	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);
 
 	/* Paleta Hufflepuff */
 /*	--cor-tema-escura: #372e29;
@@ -63,12 +63,12 @@
 	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);	*/
 
 	/* Paleta Mickey Mouse */
-	--cor-tema-escura: #f20505;
+/*	--cor-tema-escura: #f20505;
 	--cor-tema-muito-escura: #000000;
 	--cor-tema-chamativa: #f9d70b;
 	--cor-tema-clara: #f0e046;
 	--cor-tema-muito-clara: #fff;	
-	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);
+	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);*/
 
 	/* Paleta Neon */
 /*	--cor-tema-escura: #f000ff;
@@ -84,7 +84,7 @@
 	--cor-tema-chamativa: #8b9dc3;
 	--cor-tema-clara: #dfe3ee;
 	--cor-tema-muito-clara: #ffffff;	
-	--cor-tema-muito-escura-transparente: rgba(59, 89, 152, .75);*/
+	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);*/
 
 	/* Menu */
 	--altura-menu: 10vh;

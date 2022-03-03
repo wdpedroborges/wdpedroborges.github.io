@@ -12,7 +12,6 @@ body {
 	overflow: hidden;
 	animation: moveBgBanner 5s ease-in-out infinite;
 	background-attachment: fixed;
-	z-index: -1;
 }
 
 .banner .texto {
@@ -38,12 +37,36 @@ body {
 	text-align: center;
 }
 
+#setaBanner {
+	position: absolute;
+	color: var(--cor-tema-muito-clara);
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 5rem;
+	cursor: pointer;
+	animation: moveSetaBanner 0.75s ease-in-out infinite;
+	z-index: 2;
+}
+
 @media (max-width: 1000px) {
 	.banner .texto h2 {
-		font-size: 2rem;
+		font-size: 2.75rem;
 	}
 	.banner .texto p {
-		font-size: 1rem;
+		font-size: 1.5rem;
+	}
+	#setaBanner {
+		font-size: 2.75rem;
+	}
+}
+
+@keyframes moveSetaBanner {
+	from {
+		bottom: 0;
+	}
+	to {
+		bottom: 1rem;
 	}
 }
 
