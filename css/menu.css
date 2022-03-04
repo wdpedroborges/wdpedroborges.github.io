@@ -99,8 +99,7 @@
 }
 
 #btnSubir:hover {
-	border-bottom: 1px solid var(--cor-tema-muito-escura);
-	z-index: 2000;
+	transform: scale(1.25);
 }
 
 .projetos {

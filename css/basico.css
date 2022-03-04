@@ -87,12 +87,21 @@
 	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);*/
 
 	/* Paleta Artsy */
-	--cor-tema-escura: #116466;
+/*	--cor-tema-escura: #116466;
 	--cor-tema-muito-escura: #2C3531;
 	--cor-tema-chamativa: #116466;
 	--cor-tema-clara: #D9B08C;
 	--cor-tema-muito-clara: #D1E8E2;	
-	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .75);
+	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .95);*/
+
+	/* Paleta Padrão */
+	--cor-tema-escura: royalblue;
+	--cor-tema-muito-escura: #111;
+	--cor-tema-chamativa: royalblue;
+	--cor-tema-clara: #eee;
+	--cor-tema-muito-clara: #eee;	
+	--cor-tema-muito-escura-transparente: rgba(0, 0, 0, .95);
+
 
 	/* Menu */
 	--altura-menu: 10vh;

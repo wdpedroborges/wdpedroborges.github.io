@@ -34,7 +34,7 @@
 	line-height: 1.5;
 	text-align: justify;
 	font-size: 1.25rem;
-	background-color: var(--cor-tema-muito-escura);
+	background-color: var(--cor-tema-chamativa);
 	color: var(--cor-tema-muito-clara);
 	padding: 2rem;
 	border-radius: 1rem 5rem;
@@ -60,8 +60,8 @@
 }
 .alinhados ul li {
 	background: #fff;
-	color: var(--cor-tema-muito-escura);
-	border: 1px solid #fff;
+	color: var(--cor-tema-chamativa);
+	border: 1px solid var(--cor-tema-chamativa);
 	padding: 1rem;
 	border-radius: 1em;
 	margin: 0.5rem;
@@ -69,7 +69,7 @@
 	text-align: center;
 }
 .alinhados ul li:nth-child(odd) {
-	background-color: var(--cor-tema-muito-escura);
+	background-color: var(--cor-tema-chamativa);
 	color: #fff;
 	border: none;
 }
@@ -77,6 +77,7 @@
 .alinhados ul li:hover {
 	background: var(--cor-tema-muito-escura);
 	color: var(--cor-tema-muito-clara);
+	border: 1px solid #fff;
 	cursor: pointer;
 	transform: rotateZ(10deg);
 	transition: 1s;

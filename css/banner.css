@@ -27,6 +27,40 @@ body {
 	color: #fff;
 }
 
+.anim-titulo-banner-1 {
+	display: inline-block;
+	animation: animTituloBanner1 1s ease-in infinite;
+}
+
+.anim-titulo-banner-2 {
+	display: inline-block;
+	animation: animTituloBanner2 1s ease-in infinite;
+}
+
+@keyframes animTituloBanner1 {
+	0% {
+		transform: translateY(-1rem);
+	}
+	50% {
+		transform: translateY(0rem);
+	}
+	100% {
+		transform: translateY(-1rem);
+	}
+}
+
+@keyframes animTituloBanner2 {
+	0% {
+		transform: translateY(1rem);
+	}
+	50% {
+		transform: translateY(0rem);
+	}
+	100% {
+		transform: translateY(1rem);
+	}
+}
+
 .banner .texto h2:after {
 	display: none;
 }
