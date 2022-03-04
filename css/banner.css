@@ -4,8 +4,9 @@ body {
 }
 
 .banner {
-	height: 100vh;
-	width: 100%;
+	margin-top: 10vh;
+	height: 90vh;
+	width: 100vw;
 	position: relative;
 	background-color: #000;
 	background: linear-gradient(to right, var(--cor-tema-escura), var(--cor-tema-muito-escura-transparente)), url('../img/img-banner.jpg');

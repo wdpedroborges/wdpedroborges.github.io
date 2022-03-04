@@ -46,7 +46,7 @@ document.addEventListener('scroll', e => {
 	}
 	// para tirar o menu da tela
 	if (!aberto) {
-		if (scrollTop > scrollTopAnterior) {
+		if (scrollTop > scrollTopAnterior && scrollTop > 100) {
 			menu.style.opacity = '.75';
 		} else {
 			menu.style.opacity = '1';
