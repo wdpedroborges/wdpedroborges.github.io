@@ -1,5 +1,6 @@
 .container-slider-dividido {
 	--altura-slider: 600px;
+	--quantidade-slides: 5;
 	width: 100vw;
 	position: relative;
 	overflow: hidden;
@@ -49,7 +50,7 @@
 
 .linha {
 	display: grid;
-	grid-template-columns: repeat(4, 100vw);
+	grid-template-columns: repeat(var(--quantidade-slides), 100vw);
 	transition: .5s;
 }
 

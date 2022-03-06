@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: lightcyan;
+	font-family: 'Poppins', sans-serif;
+	overflow: hidden;
+}
+
+.title {
+	z-index: 10;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	inset: 0;
+	margin: 0;
+	background-color: rgba(255, 255, 255, .75);
+}
+
+.subtitle, .record {
+	margin-top: 0.5rem;
+}
+
+.record {
+	color: darkgreen;
+}
+
+.hide {
+	display: none;
+}
+
+/* PÁSSARO */
+.bird {
+	--bird-top: 50;
+	--bird-left: 50;
+	position: absolute;
+	top: calc(var(--bird-top) * 1px);
+	left: calc(var(--bird-left) * 1px);
+	width: 50px;
+	height: 50px;
+}
+
+/* CONFIGURAÇÃO DOS PIPES */
+.pipe {
+	--hole-top: 400;
+	--hole-height: 150;
+	--pipe-width: 75;
+	--pipe-left: 900;
+	position: absolute;
+	/* quando top e bottom são colocados no 0, o elemento expande-se no height todo; o mesmo para a combinação left e right; logo, se botarmos top, bottom, left e right no 0, o elemento se expandirá para a tela toda; é isso que faz a propriedade inset: 0*/
+	top: 0;
+	bottom: 0;
+	width: calc(var(--pipe-width) * 1px);
+	left: calc(var(--pipe-left) * 1px);
+}
+
+/* > = filho direto */
+.pipe > .segment {
+	position: absolute;
+	width: 100%;
+	background-color: #111;
+}
+
+/* segmento de cima */
+.pipe > .top {
+	top: 0;
+	bottom: calc(var(--hole-top) * 1px); /* trata-se do quanto pra cima ele ficará */
+}
+
+/* segmento de baixo */
+.pipe > .bottom {
+	bottom: 0;
+	/* 
+		entenda o cálculo: 
+		- você tem a altura da tela toda, que é 100vh; dessa altura, subtrai-se o --hole-top, que é o quanto pra cima o segmento de cima está; fazendo só isso, você tem os elementos conectados perfeitamente
+		- porém, ainda adiciona-se o hole-height, que é a altura do gap entre os segmentos; ou seja, o elemento vai descer primeiramente o suficiente para se encaixar perfeitamente e depois ainda vai descer mais um pouco, que é o tamanho do gap
+	*/
+	top: calc(100vh - var(--hole-top) * 1px + calc(var(--hole-height) * 1px)); /* trata-se do quanto pra baixo ele ficará */
+}
