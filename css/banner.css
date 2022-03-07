@@ -28,7 +28,7 @@ body {
 	color: #fff;
 }
 
-.anim-titulo-banner-1 {
+/*.anim-titulo-banner-1 {
 	display: inline-block;
 	animation: animTituloBanner1 1s ease-in infinite;
 }
@@ -36,7 +36,7 @@ body {
 .anim-titulo-banner-2 {
 	display: inline-block;
 	animation: animTituloBanner2 1s ease-in infinite;
-}
+}*/
 
 @keyframes animTituloBanner1 {
 	0% {
