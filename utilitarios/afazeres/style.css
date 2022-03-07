@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background: linear-gradient(to left, #212121, #fff);
+	background-size: 300%;
+	/*animation: animacaoBackground 7s ease infinite;*/
+	color: #212121;
+	font-family: Roboto, sans-serif;
+	font-weight: 300;
+}
+
+nav {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: #212121;
+	color: #fff;
+	padding: 10px;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	width: 50%;
+}
+
+nav ul li {
+	cursor: pointer;
+	animation: li 1s linear;
+}
+
+nav ul li:hover {
+	text-decoration: underline;
+	transition: .3s;
+}
+
+h1 {
+	animation: pulso 1s ease-out forwards;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: .1px;
+	font-size: 2.5rem;
+	display: none;
+}
+
+main {
+	padding: 10px;
+	background: #fff;
+	box-shadow: 2px 2px 5px #606060;
+	width: 90%;
+	margin: 3% auto;
+	border-radius: 10px;
+}
+
+h2 {
+	font-family: 'Yellowtail', cursive;
+	font-size: 3rem;
+	margin: 0px;
+}
+
+.msg {
+	background: lightyellow;
+	padding: 1rem;
+	border-radius: 1rem;
+	font-weight: bolder;
+	border: 1px solid #606060;
+}
+
+ol {
+	list-style: none;
+	width: 100%;
+}
+
+ol li {
+	font-size: 1.5rem;
+	background: #fff;
+	position: relative;
+	padding: 5px;
+	border-radius: 10px;
+	margin-bottom: 5px;
+	outline: 1px solid #eee;
+	cursor: pointer;
+
+	background: linear-gradient(to right top, rgba(255, 255, 255, .7), rgba(255, 255, 255, .3));
+	backdrop-filter: blur(50px);
+}
+
+.feito {
+	text-decoration: line-through;
+	color: seagreen;
+}
+
+.nao-feito {
+	text-decoration: none;
+	color: #333;
+}
+
+ol li:hover {
+	opacity: .8;
+	transform: scale(1.05);
+}
+
+ol li i {
+	position: absolute;
+	right: 1%;
+}
+
+#div_afazeres {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.graficos {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+/* modal */
+.bg-modal {
+	background: rgba(0, 0, 0, .90);
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+.modal {
+	background: #fff;
+	width: 75%;
+	margin: 10% auto;
+	padding: 2rem;
+	border-radius: 1rem;
+	text-align: center;
+}
+
+.titulo-parabens {
+	color: seagreen;
+}
+
+button {
+	padding: 10px;
+	border: none;
+	background: #006aff;
+	color: #fff;
+	border-radius: 10px;
+}
+
+button:hover {
+	opacity: .7;
+	cursor: pointer;
+}
+
+input[type="text"] {
+	border: none;
+	border-bottom: 1px solid #212121;
+	background: transparent;
+}
+
+input[type="text"]:focus {
+	outline: none;
+	background: transparent;
+}
+
+
+#div_novos_afazeres {
+	display: none;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
+
+.dimensao-grafico {
+	width: 400px;
+	height: 400px;
+}
+
+/* UNIVERSO */
+#universo {
+	outline: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.vida {
+	color: tomato;
+}
+
+.estrelas {
+	color: dodgerblue;
+}
+
+.pontuacao {
+	color: orange;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes animacaoBackground {
+	0% {
+		background-position: 0% 100%;
+	}
+	50% {
+		background-position: 50% 0%;
+	}
+	100% {
+		background-position: 0% 100%;
+	}
+}
+
+@keyframes li {
+	from {
+		margin-top: -200px;
+	}
+	to {
+		margin-top: inherit;
+	}
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js" defer></script>
+	<link rel="icon" type="image/png" href="icon.png"/>
+	<title>Minha Vida</title>
+</head>
+<body>
+
+<form>
+	<label for="data_nascimento">Data de nascimento: </label>
+	<input type="date" name="data_nascimento" id="data_nascimento">
+	<label for="data_morte">Data de morte: </label>
+	<input type="date" name="data_morte" id="data_morte">
+	<div class="bloco-repetitivo">
+		<label for="titulo_intervalo">Título do intervalo: </label>
+		<input type="text" name="titulo_intervalo" id="titulo_intervalo">
+		<label for="cor_intervalo">Cor do intervalo: </label>
+		<input type="color" name="cor_intervalo" id="cor_intervalo">
+		<label for="data_inicio_intervalo">Data de início: </label>
+		<input type="date" name="data_inicio_intervalo" id="data_inicio_intervalo">
+		<label for="data_fim_intervalo">Data de fim: </label>
+		<input type="date" name="data_fim_intervalo" id="data_fim_intervalo">
+		<span class="botao-repetitivo" id="btn_cadastrar_intervalo">Cadastrar intervalo</span>
+	</div>
+	<div class="bloco-repetitivo">
+		<label for="titulo_data_comemorativa">Título da data comemorativa: </label>
+		<input type="text" name="titulo_data_comemorativa" id="titulo_data_comemorativa">
+		<label for="data_comemorativa">Data comemorativa: </label>
+		<input type="date" name="data_comemorativa" id="data_comemorativa">
+		<span class="botao-repetitivo" id="btn_cadastrar_data_comemorativa">Cadastrar data comemorativa</span>
+	</div>
+	<div class="bloco-repetitivo">
+		<label for="titulo_data_especifica">Título da data específica: </label>
+		<input type="text" name="titulo_data_especifica" id="titulo_data_especifica">
+		<label for="data_especifica">Data comemorativa: </label>
+		<input type="date" name="data_especifica" id="data_especifica">
+		<span class="botao-repetitivo" id="btn_cadastrar_data_especifica">Cadastrar data específica</span>
+	</div>
+	<div class="bloco-repetitivo">
+		<label for="comentario_idade">Comentário para idade: </label>
+		<input type="text" name="comentario_idade" id="comentario_idade">
+		<label for="idade">Idade: </label>
+		<input type="number" name="idade" id="idade">
+		<span class="botao-repetitivo" id="btn_cadastrar_comentario_idade">Cadastrar comentário para idade</span>
+	</div>
+	<button id="btn_finalizar">Finalizar</button>
+</form>
+
+<button id="btn_salvar">Salvar</button>
+<button id="btn_resetar">Resetar</button>
+
+<div class="info"></div>
+<canvas id="canvas"></canvas>
+
+</body>
+</html>

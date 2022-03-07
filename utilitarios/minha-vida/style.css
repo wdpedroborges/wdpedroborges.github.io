@@ -1,0 +1,95 @@
+::before, ::after, body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Verdana, sans-serif;
+}
+
+body {
+	overflow-x: hidden;
+	background: #fff;
+}
+
+canvas {
+	display: none;
+	margin: 2rem auto;
+	cursor: pointer;
+	outline: 5px solid #fff;
+}
+
+.info {
+	width: 50%;
+	background: dodgerblue;
+	color: #fff;
+	box-shadow: 0 0 5px #333;
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+	position: fixed;
+	top: 1%;
+	left: 23%;
+	display: none;
+}
+
+form {
+	width: 30%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	cursor: pointer;
+	font-weight: bolder;
+	margin: 10px 0px;
+}
+
+.bloco-repetitivo {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #333;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px 0px 10px 0px;
+}
+
+button, .botao-repetitivo {
+	cursor: pointer;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	text-align: center;
+}
+
+button:hover, .botao-repetitivo:hover {
+	opacity: .75;
+}
+
+.botao-repetitivo {
+	background: limegreen;
+	margin: 10px 0px;
+	color: #fff;
+}
+
+#btn_finalizar {
+	background: seagreen;
+	color: #fff;
+}
+
+#btn_salvar, #btn_resetar {
+	position: fixed;
+	top: 1%;
+	color: #fff;
+	display: none;
+}
+
+#btn_salvar {
+	left: 90%;
+	background: limegreen;
+}
+
+#btn_resetar {
+	left: 10%;
+	background: orangered;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Binary Wars</title>
+	<meta name="author" content="Pedro Stewart Silva Borges">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="icon" type="image/png" href="img/nave.png"/>
+</head>
+<style type="text/css">
+</style>
+<body>
+<h1>Binary Wars</h1>
+<!-- TOAST -->
+<div id="toast"></div>
+<!-- *** -->
+<!-- MODAL DE INÍCIO -->
+<div id="bg_inicio" class="bg">
+	<div id="inicio" class="modal">
+		<h2>Binary Wars: Início</h2>
+		<p>Utilize as setas para esquerda e direita ou as letras A e D para mover a nave. Aperte a barra de espaço para atirar.</p>
+		<p>Ao destruir alienígenas, você ganha pontos. Se destruir qualquer outra coisa, perde ponto.</p>
+		<p>O jogo inicia com um número aleatório, em binário. A sua missão é mudar os valores de um e zero para formar o número objetivo. Ao atirar em um bloco de valor um, ele se torna zero e vice-versa. Dessa forma, você consegue montar a combinação necessária.</p>
+		<p>O jogo acaba quando o tempo chegar a 00:00</p>
+		<p>Defina seu tempo de jogo em minutos:</p>
+		<input type="number" id="tempo_desejado" value="5">
+		<button id="btn_jogar">Jogar!</button>
+	</div>
+</div>
+<!-- *** -->
+<!-- MODAL DE GAME OVER -->
+<div id="bg_fim" class="bg">
+	<div id="fim" class="modal">
+		<h2>Binary Wars: Game Over</h2>
+		<p>Seu tempo acabou.</p>
+		<p>Pontuação obtida: <span id="pontuacao_obtida">666</span></p>
+		<button id="btn_jogar_novamente">Jogar novamente!</button>
+	</div>
+</div>
+<!-- *** -->
+<!-- JOGO -->
+<div id="espaco">
+	<div id="ajuda">
+		<div>128</div>
+		<div>64</div>
+		<div>32</div>
+		<div>16</div>
+		<div>8</div>
+		<div>4</div>
+		<div>2</div>
+		<div>1</div>
+	</div>
+	<div id="alternativas">
+		<div class="alt"><span class="valor">1</span></div>
+		<div class="alt"><span class="valor">1</span></div>
+		<div class="alt"><span class="valor">1</span></div>
+		<div class="alt"><span class="valor">1</span></div>
+		<div class="alt"><span class="valor">1</span></div>
+		<div class="alt"><span class="valor">1</span></div>
+		<div class="alt"><span class="valor">1</span></div>
+		<div class="alt"><span class="valor">1</span></div>
+	</div>
+	<div id="informacoes">
+		<p><span class="negrito">Número atual: </span><span id="numero_atual">255</span> <span class="material-icons">preview</span></p>
+		<p><span class="negrito">Número objetivo: </span><span id="numero_objetivo">255</span> <span class="material-icons">flag</span></p>
+		<p><span class="negrito">Pontuação: </span> <span class="verde"><span id="pontuacao">10</span> <span class="material-icons">stars</span></span></p>
+		<p><span class="negrito">Tempo: </span> <span class="vermelho"><span id="tempo">05:00</span> <span class="material-icons">query_builder</span></span></p>
+	</div>
+	<div id="obstaculos">
+	</div>
+	
+	<div id="laser"></div>
+	<div id="nave">
+	</div>
+</div>
+<!-- *** -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

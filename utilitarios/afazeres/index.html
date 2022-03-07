@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Afazeres</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+	<script type="text/javascript" src="chart.js" defer></script>
+	<script type="text/javascript" src="script.js" defer></script>
+	<link rel="icon" type="image/png" href="icon.png"/>
+</head>
+<body>
+
+<nav>
+	<h1>Afazeres</h1>
+	<ul>
+		<li id="li_afazeres"><i class="bi bi-list-task"></i> Afazeres</li>
+		<li id="li_novos_afazeres"><i class="bi bi-plus-square"></i> Novos afazeres</li>
+		<li id="btnResetar"><i class="bi bi-x-square"></i> Resetar</li>
+	</ul>
+</nav>
+
+<main>
+	<div>
+		<div id="div_afazeres">
+			<h2>Aqui estão os seus afazeres...</h2>
+			<p class="msg"></p>
+
+			<ol id="afazeres"></ol>
+			
+			<h2>Veja o seu progresso</h2>
+			<div class="graficos">
+				<div class="dimensao-grafico">
+					<canvas id="primeiroGrafico" width="400" height="400"></canvas>
+				</div>
+
+				<div>
+					<!-- <p><i class="pontuacao bi bi-award-fill"></i> Pontuação: 0</p> -->
+					<p><i class="estrelas bi bi-star-fill"></i> Estrelas: <span id="quantidadeEstrelas"></span></p>
+<!-- 					<p>
+						<i class="vida bi bi-heart-fill"></i>
+						<i class="vida bi bi-heart-fill"></i>
+						<i class="vida bi bi-heart-fill"></i>
+						<i class="vida bi bi-heart-fill"></i>
+						<i class="vida bi bi-heart-fill"></i>
+						<i class="vida bi bi-heart-fill"></i>
+						<i class="vida bi bi-heart-fill"></i>
+						<i class="vida bi bi-heart-half"></i>
+						<i class="vida bi bi-heart"></i>
+						<i class="vida bi bi-heart"></i>
+					</p> -->
+					<canvas id="universo" width="400" height="400"></canvas>
+				</div>
+
+<!-- 				<div class="dimensao-grafico">
+					<canvas id="segundoGrafico" width="400" height="400"></canvas>
+				</div> -->
+			</div>
+		</div>
+
+		<div id="div_novos_afazeres">
+			<form id="formNovosAfazeres">
+				<input type="text" name="afazer" placeholder="Adicione um novo afazer">
+				<button>Adicionar</button>
+			</form>
+			<div id="container-afazeres-adicionados">
+				<h2>Afazeres adicionados</h2>
+				<ol id="afazeresAdicionados"></ol>
+				<div class="botoes">
+					<button id="btnLimpar">Limpar</button>
+					<button id="btnSalvar">Salvar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- modal -->
+<div class="bg-modal">
+	<div class="modal">
+		<h2 class="titulo-parabens">Parabéns, você concluiu todos os afazeres do dia!</h2>
+		<p>Você ganhou uma nova estrela no seu universo.</p>
+	</div>
+</div>
+
+</body>
+</html>
