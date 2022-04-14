@@ -3,255 +3,56 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/estilo.css">
-	<link rel="stylesheet" type="text/css" href="css/criador.css">
-	<title>Criador</title>
+	<link rel="stylesheet" type="text/css" href="jogo.css">
+	<link rel="stylesheet" type="text/css" href="criador.css">
+	<script type="text/javascript" src="criador.js" defer></script>
+	<title>Torne Verdadeiro - Criador</title>
 </head>
 <body>
 
-<nav id="menu">
-	<ul>
-		<li><a href="index.html">Voltar</a></li>
-	</ul>
-</nav>
+<h2>Torne Verdadeiro - Criador de Circuitos</h2>
 
-<ol>
-	<li>Clique nos elementos e depois clique nos quadrados para selecioná-los.</li>
-	<li>Comece pelo último quadrado à esquerda.</li>
-	<li>Após inserir algum elemento que esteja acima da primeira linha, você deve clicar nos elementos nos quais ele se conecta.</li>
-</ol>
+<div class="alinhados">
+	<div id="elementosCriacao">
+		<div class="alinhados">
+			<img src="elementos/linha-central-vertical.png" class="elemento" title="linha-central-vertical">
+			<img src="elementos/linha-lateral-esquerda.png" class="elemento" title="linha-lateral-esquerda">
+			<img src="elementos/linha-lateral-direita.png" class="elemento" title="linha-lateral-direita">
+			<img src="elementos/linha-recentralizadora-esquerda.png" class="elemento" title="linha-recentralizadora-esquerda">
+			<img src="elementos/linha-recentralizadora-direita.png" class="elemento" title="linha-recentralizadora-direita">
+		</div>
+		<div class="alinhados">
+			<img src="elementos/primeiro-canto.png" class="elemento" title="primeiro-canto">
+			<img src="elementos/segundo-canto.png" class="elemento" title="segundo-canto">
+			<img src="elementos/terceiro-canto.png" class="elemento" title="terceiro-canto">
+			<img src="elementos/quarto-canto.png" class="elemento" title="quarto-canto">
+			<img src="elementos/linha-central-horizontal.png" class="elemento" title="linha-central-horizontal">
+		</div>
+		<div class="alinhados">
+			<img src="elementos/cruz.png" class="elemento" title="cruz">
+			<img src="elementos/cruz-quebrada-esquerda.png" class="elemento" title="cruz-quebrada-esquerda">
+			<img src="elementos/cruz-quebrada-direita.png" class="elemento" title="cruz-quebrada-direita">
+		</div>
+		<div class="alinhados">
+			<img src="elementos/not.png" class="elemento" title="not">
+			<img src="elementos/and.png" class="elemento" title="and">
+			<img src="elementos/or.png" class="elemento" title="or">
+		</div>
+	</div>
 
-<label for="resultado_circuito">O resultado do circuito aparecerá nesta caixa de texto. Copie e cole o resultado na caixa de texto da <a href="index.html">página principal</a>.</label>
-<textarea id="resultado_circuito"></textarea>
-
-<button id="btn_gerar_circuito">Gerar circuito</button>
-<button id="btn_desfazer">Desfazer operação</button>
-<div id="elementos_criacao">
-	<img src="img/linha_central.jpg" class="elemento" tipo="linha_central">
-	<img src="img/linha_lateral_exemplo.jpg" class="elemento" tipo="linha_lateral">
-	<img src="img/linha_diagonal_esquerda.jpg" class="elemento" tipo="linha_diagonal_esquerda">
-	<img src="img/linha_diagonal_direita.jpg" class="elemento" tipo="linha_diagonal_direita">
-	<img src="img/conexao_linha_diagonal_esquerda.jpg" class="elemento" tipo="conexao_linha_diagonal_esquerda">
-	<img src="img/conexao_linha_diagonal_direita.jpg" class="elemento" tipo="conexao_linha_diagonal_direita">
-	<img src="img/not.jpg" class="elemento" tipo="not">
-	<img src="img/and.jpg" class="elemento" tipo="and">
-	<img src="img/or.jpg" class="elemento" tipo="or">
+	<div id="jogo">
+		<div id="output">Indeterminado</div>
+		<div id="circuito"></div>
+		
+		<div id="estadoInicial" title="Aqui você deve informar o estado inicial do seu circuito (de preferência, com mais cliques)"></div>
+		<p>Defina acima o <strong>estado inicial</strong> do circuito.</p>
+		<div id="solucaoPerfeita" title="Aqui você deve informar a solução perfeita (com menos cliques) para o circuito que você criou."></div>
+		<p>Defina acima a <strong>solução perfeita</strong> para o circuito.</p>
+	</div>
 </div>
-<div id="quadro_criativo" class="config_base dimensao_pai"></div>
 
-<div id="toast"></div>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/funcoes_uteis.js"></script>
-<script type="text/javascript">
-let qtde_colunas=15;
-let qtde_linhas=15;
-let qtde_elementos=qtde_colunas*qtde_linhas;
-// CRIA quadro E ENCHE DE ZEROS
-let quadro=[];
-for (let i=0; i<qtde_linhas; i++) {
-	let linha=[];
-	for (let j=0; j<qtde_colunas; j++) {
-		linha.push(0);
-	}
-	quadro.push(linha);
-}
-// FAZ COM QUE TODOS FIQUEM LOCALIZÁVEIS DENTRO DE UMA quadro
-let k=0;
-for (let i=qtde_linhas-1; i>=0; i--) {
-	for (let j=0; j<qtde_colunas; j++) {
-		let elemento=$(`<div class='dimensao_filho espaco_elemento' coords='${i},${j}'></div>`);
-		$('#quadro_criativo').append(elemento);
-		quadro[i][j] = $('#quadro_criativo').children().eq(k);
-		k++;
-	}
-}
-// DIMENSIONA TODOS OS ELEMENTOS, PARA FICAREM DE ACORDO
-let valor_pixels=35; 
-let dimensao_pai=qtde_colunas*valor_pixels;
-let dimensao_filho=dimensao_pai/qtde_colunas;
-$('.config_base').css('grid-template-columns', `repeat(${qtde_colunas}, 1fr)`)
-$('.dimensao_pai').css('width', `${dimensao_pai}px`);
-$('.dimensao_filho').css('height', `${dimensao_filho}px`);
-
-
-$('.elemento').click(function(){
-	let elementos=$('.elemento');
-	for(let i=0; i<elementos.length; i++){
-		if($(elementos[i]).hasClass('clicado')){
-			$(elementos[i]).removeClass('clicado').css('border', 'none');
-		}
-	}
-	$(this).addClass('clicado').css('border', '2px solid orange')
-});
-
-let a_saber, feito=true;
-let primeira_conexao=false, segunda_conexao=false;
-
-$('.espaco_elemento').click(function(){
-	if(feito && !$(this).hasClass('.inserido')){
-		let espacos=$('.espaco_elemento');
-		for(let i=0; i<espacos.length; i++){
-			if($(espacos[i]).hasClass('ultimo')){
-				$(espacos[i]).removeClass('ultimo');
-			}
-		}
-		let tipo=$('.clicado').attr('tipo');
-		if(tipo=='not'){
-			$(this).css('background-image', "url('img/not.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'not').attr('simples', 'true');
-		}else if(tipo=='and'){
-			$(this).css('background-image', "url('img/and.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'and').attr('simples', 'false');
-		}else if(tipo=='or'){
-			$(this).css('background-image', "url('img/or.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'or').attr('simples', 'false');
-		}else if(tipo=='linha_central'){
-			$(this).css('background-image', "url('img/linha_central.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'linha_central').attr('simples', 'true');
-		}else if(tipo=='linha_lateral'){
-			$(this).css('background-image', "url('img/linha_lateral.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'linha_lateral').attr('simples', 'true');
-		}else if(tipo=='linha_diagonal_esquerda'){
-			$(this).css('background-image', "url('img/linha_diagonal_esquerda.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'linha_diagonal_esquerda').attr('simples', 'true');
-		}else if(tipo=='linha_diagonal_direita'){
-			$(this).css('background-image', "url('img/linha_diagonal_direita.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'linha_diagonal_direita').attr('simples', 'true');
-		}else if(tipo=='conexao_linha_diagonal_esquerda'){
-			$(this).css('background-image', "url('img/conexao_linha_diagonal_esquerda.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'conexao_linha_diagonal_esquerda').attr('simples', 'true');
-		}else if(tipo=='conexao_linha_diagonal_direita'){
-			$(this).css('background-image', "url('img/conexao_linha_diagonal_direita.jpg')").addClass('ultimo').addClass('inserido').attr('tipo', 'conexao_linha_diagonal_direita').attr('simples', 'true');
-		}
-
-		if($(this).attr('coords').split(',')[0]=='0'){
-			feito=true;
-			$(this).attr('conexao', 'inicial');
-		}else{
-			a_saber=$(this);
-			feito=false;
-			toast('Informe o(s) elemento(s) anterior(es) que se conecta(m) a este que foi inserido.');
-		}
-
-	}else{
-		if(a_saber.attr('simples')=='true'){
-			a_saber.attr('conexao', $(this).attr('coords'));
-			feito=true;
-			toast('Conexão informada com sucesso.', 'darkgreen');
-		}else{
-			if(!primeira_conexao){
-				a_saber.attr('primeira_conexao', $(this).attr('coords'));
-				primeira_conexao=true;
-				toast('Primeira conexão informada. Informe a segunda.', 'darkblue');
-			}else if(primeira_conexao&&!segunda_conexao){
-				a_saber.attr('segunda_conexao', $(this).attr('coords'));
-				segunda_conexao=true;
-				toast('Conexões informadas com sucesso.', 'darkgreen');
-			} else if(primeira_conexao&&segunda_conexao){
-				feito=true;
-				primeira_conexao=false;
-				segunda_conexao=false;
-			}
-		}		
-	}
-
-	insere_imagens();
-});
-
-function insere_imagens(){
-	for(let i=0; i<qtde_linhas; i++){
-		for(let j=0; j<qtde_colunas; j++){
-			if($(quadro[i][j]).attr('tipo')=='not'){
-				let conecta_a=$(quadro[i][j]).attr('conexao');
-				if(conecta_a!=undefined){
-					conecta_a=conecta_a.split(',');
-					conecta_a=listaparaint(conecta_a);
-					let l=conecta_a[0]; let c=conecta_a[1];
-					if($(quadro[l][c]).attr('tipo')=='linha_lateral'){
-						$(quadro[i][j]).css('background-image', "url('img/not1.jpg')");
-						$(quadro[i][j+1]).css('background-image', "url('img/not2.jpg')");
-					}else{
-						$(quadro[i][j]).css('background-image', "url('img/not.jpg')");
-					}
-				}
-			}else if($(quadro[i][j]).attr('tipo')=='and'){
-				$(quadro[i][j]).css('background-image', "url('img/and1.jpg')");
-				$(quadro[i][j+1]).css('background-image', "url('img/and2.jpg')");
-			}else if($(quadro[i][j]).attr('tipo')=='or'){
-				$(quadro[i][j]).css('background-image', "url('img/or1.jpg')");
-				$(quadro[i][j+1]).css('background-image', "url('img/or2.jpg')");
-			}else if($(quadro[i][j]).attr('tipo')=='linha_central'){
-				$(quadro[i][j]).css('background-image', "url('img/linha_central.jpg')");
-			}else if($(quadro[i][j]).attr('tipo')=='linha_lateral'){
-				$(quadro[i][j]).css('background-image', "url('img/linha_lateral.jpg')");
-			}else if($(quadro[i][j]).attr('tipo')=='linha_diagonal_esquerda'){
-				$(quadro[i][j]).css('background-image', "url('img/linha_diagonal_esquerda.jpg')");
-			}else if($(quadro[i][j]).attr('tipo')=='linha_diagonal_direita'){
-				$(quadro[i][j]).css('background-image', "url('img/linha_diagonal_direita.jpg')");
-			}else if($(quadro[i][j]).attr('tipo')=='conexao_linha_diagonal_esquerda'){
-				$(quadro[i][j]).css('background-image', "url('img/conexao_linha_diagonal_esquerda.jpg')");
-			}else if($(quadro[i][j]).attr('tipo')=='conexao_linha_diagonal_direita'){
-				$(quadro[i][j]).css('background-image', "url('img/conexao_linha_diagonal_direita.jpg')");
-			}
-		}
-	}
-}
-
-
-$('#btn_desfazer').click(function(){
-	$('.ultimo').css('background-image', "none").attr('tipo', '');
-});
-
-// TOAST
-function toast(texto, bg='orange', tempo=3000) {
-	$('#toast').css('background', bg);
-	$('#toast').text(texto);
-	$('#toast').fadeIn('300');
-	setTimeout(function() {
-		$('#toast').fadeOut('1000');
-	}, tempo);
-}
-// ***
-
-$('#btn_gerar_circuito').click(function(){
-	let e=$('.inserido');
-	let coordenadas=[];
-	let info=[];
-	for(let i=0; i<e.length; i++){
-		coordenadas.push(listaparaint($(e[i]).attr('coords').split(',')));
-
-		if($(e[i]).attr('simples')=='true'){
-			info.push(
-				{
-					'coordenada':`${listaparaint($(e[i]).attr('coords').split(','))}`,
-					'tipo':`${$(e[i]).attr('tipo')}`	,
-					'simples':`${$(e[i]).attr('simples')}`,
-					'conexao':`${$(e[i]).attr('conexao')}`
-				}
-			);		
-		}else{
-			info.push(
-				{
-					'coordenada':`${listaparaint($(e[i]).attr('coords').split(','))}`,
-					'tipo':`${$(e[i]).attr('tipo')}`	,
-					'simples':`${$(e[i]).attr('simples')}`,
-					'primeira_conexao':`${$(e[i]).attr('primeira_conexao')}`,
-					'segunda_conexao':`${$(e[i]).attr('segunda_conexao')}`
-				}
-			);				
-		}
-
-
-	}
-
-	let linhas=maximo(getColuna(coordenadas, 0));
-	let colunas=maximo(getColuna(coordenadas, 1));
-	linhas++; colunas++;
-
-	dimensao=[linhas, colunas];
-
-	let circuito={
-		"dimensao":dimensao,
-		"info":info
-	};
-
-	toast('Seu circuito foi gerado com sucesso.', 'purple');
-	$('#resultado_circuito').val(JSON.stringify(circuito));
-});
-
-</script>
+<h2>Código:</h2>
+<textarea id="codigo"></textarea>
 
 </body>
 </html>

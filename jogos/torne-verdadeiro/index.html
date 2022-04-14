@@ -2,52 +2,26 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Torne Verdadeiro</title>
-	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="jogo.css">
+	<script type="text/javascript" src="jogo.js" defer></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<title>Torne Verdadeiro - Jogo</title>
 </head>
 <body>
 
-<h1>Torne Verdadeiro</h1>
-
-<nav id="menu">
-	<ul>
-		<li><a href="criador.html">Criar circuito</a></li>
-	</ul>
-</nav>
-
-<textarea id="envio_circuito" placeholder="Insira aqui o código gerado na criação do circuito."></textarea>
-
-<div id="jogo">
-	<div id="output" class="dimensao_pai">INDETERMINADO</div>
-	<div id="quadro" class="dimensao_pai config_base"></div>
-	<div id="container_inputs" class="dimensao_pai config_base"></div>
+<div class="alinhados">
+	<div>
+		<p><i class="bi bi-battery-charging"></i></p>
+		<p><i class="bi bi-hourglass-split"></i></p>
+	</div>
+	<div id="jogo">
+		<div id="output">Indeterminado</div>
+		<div id="circuito"></div>
+		<div id="input"></div>
+	</div>
+	<img src="lampada-desligada.png" id="lampada">
 </div>
 
-<div id="ajuda">
-	<h2>Como jogar</h2>
-	<p>Um circuito lógico opera com valores 0 (falso) e 1 (verdadeiro). Clique nas entradas abaixo para alterná-las entre 0 e 1, de forma a obter verdadeiro na saída. O objetivo do jogo é passar de nível com o mínimo de ações.</p>
-	<details>
-		<summary>Saiba mais sobre os operadores</summary>
-		<p>NOT: transforma verdadeiro em falso e falso em verdadeiro.</p>
-		<img src="img/not.jpg">
-		<p>AND: exige que ambas as entradas sejam verdadeiras.</p>
-		<img src="img/and.jpg">
-		<p>OR: pelo menos uma entrada deve ser verdadeira.</p>
-		<img src="img/or.jpg">
-		<p>NAND: ambas as entradas não podem ser verdadeiras.</p>
-		<img src="img/nand.jpg">
-		<p>XOR: só uma entrada deve ser verdadeira.</p>
-		<img src="img/xor.jpg">
-		<p>NOR: ambas as entradas precisam ser falsas.</p>
-		<img src="img/nor.jpg">
-		<p>XNOR: ou ambas falsas ou ambas verdadeiras.</p>
-		<img src="img/xnor.jpg">
-	</details>
-</div>
-
-<div id="toast"></div>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/funcoes_uteis.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

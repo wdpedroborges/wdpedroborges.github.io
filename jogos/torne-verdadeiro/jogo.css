@@ -1,0 +1,77 @@
+:root {
+	--dimensaoElemento: 35px;
+	--elementosPorColuna: 10;
+}
+
+body {
+	background-color: lightyellow;
+}
+
+#jogo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #212121;
+	overflow: hidden;
+	border-radius: 1rem;
+	box-shadow: 2px 2px 10px black;
+	border: 2px solid #fff;
+	width: calc(var(--elementosPorColuna) * var(--dimensaoElemento));
+}
+
+#output, #input, #solucaoPerfeita, #estadoInicial {
+	width: calc(var(--elementosPorColuna) * var(--dimensaoElemento));
+	background-color: #aaa;
+	text-align: center;
+	font-weight: bolder;
+	line-height: 200%;
+}
+
+#input, #solucaoPerfeita, #estadoInicial {
+	display: grid;
+	grid-template-columns: repeat(var(--elementosPorColuna), 1fr);
+}
+
+.input, .input-estado-inicial, .input-solucao-perfeita {
+	cursor: pointer;
+	user-select: none;
+}
+
+#input {
+	background-color: #000;
+	color: #fff;
+}
+
+#output {
+	text-transform: uppercase;
+	background-color: #000;
+	color: #fff;
+}
+
+#circuito {
+	display: grid;
+	grid-template-columns: repeat(var(--elementosPorColuna), 1fr);
+	width: calc(var(--elementosPorColuna) * var(--dimensaoElemento));
+	text-align: center;
+}
+
+#circuito div, #circuito img {
+	height: var(--dimensaoElemento);
+	width: var(--dimensaoElemento);
+	color: #aaa;
+}
+
+.espacoElemento {
+	background-size: cover;
+}
+
+.on {
+	outline: 1px solid green;
+}
+
+.alinhados {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
