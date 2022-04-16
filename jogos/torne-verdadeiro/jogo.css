@@ -298,6 +298,7 @@ body {
 @media (max-width: 1000px) {
 	.alinhados {
 		flex-direction: column;
+		height: auto;
 	}
 }
 
