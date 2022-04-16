@@ -45,7 +45,7 @@ h2 {
 	padding: 1rem;
 }
 
-.alinhados {
+.alinhados-criador {
 	display: flex;
 	justify-content: space-around;
 }

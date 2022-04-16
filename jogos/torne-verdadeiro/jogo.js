@@ -16,7 +16,9 @@ const modalInicial = document.querySelector('#modalInicial');
 const motivoDerrota = document.querySelector('#motivoDerrota');
 const bateria = document.querySelector('#bateria');
 const tempo = document.querySelector('#tempo');
+const pontuacao = document.querySelector('#pontuacao');
 const infoMusica = document.querySelector('#infoMusica');
+const play = document.querySelector('#play');
 
 let tempoInicial = 30; // segundos
 let tempoCorrente;
@@ -25,6 +27,7 @@ let qtdeBateria = 0;
 let vitoria = false;
 let derrota = false;
 let estadoInicial, solucaoPerfeita;
+let valorPontuacao = 0;
 
 let intervaloTemporizador;
 function temporizador() {
@@ -37,16 +40,20 @@ function temporizador() {
 			}
 		} else {
 			clearInterval(intervaloTemporizador);
+			exibeBtnProximo();
 			motivoDerrota.innerText = 'O seu tempo acabou :(';
 			motivoDerrota.style.setProperty('display', 'block');
 			derrota = true;
+			const music = new Audio('efeitos-sonoros/fracasso.wav'); music.play(); music.loop = false;
 		}
 	}, 1000);
 }
 
+const musicaFundo = new Audio('efeitos-sonoros/The Itch (Instrumental) - NEFFEX.mp3');
 btnJogar.addEventListener('click', () => {
 	modalInicial.style.setProperty('display', 'none');
-	const music = new Audio('efeitos-sonoros/Born a Rockstar (Instrumental) - NEFFEX.mp3'); music.play(); music.loop =true;
+	
+	musicaFundo.play(); musicaFundo.loop = true;
 
 	infoMusica.style.setProperty('display', 'block');
 	setTimeout(() => {
@@ -55,6 +62,18 @@ btnJogar.addEventListener('click', () => {
 
 	leCircuito(JSON.parse(circuitosFeitos[circuitoAtual]));
 	temporizador();
+});
+
+play.addEventListener('click', () => {
+	if (play.classList.contains('bi-pause')) {
+		play.classList.remove('bi-pause');
+		play.classList.add('bi-play');
+		musicaFundo.pause();
+	} else {
+		play.classList.remove('bi-play');
+		play.classList.add('bi-pause');
+		musicaFundo.play();
+	}
 });
 
 btnProximo.addEventListener('click', () => {
@@ -67,6 +86,7 @@ btnProximo.addEventListener('click', () => {
 	derrota = false;
 	motivoDerrota.style.setProperty('display', 'none');
 	estrelas.style.setProperty('display', 'none');
+	btnProximo.style.setProperty('display', 'none');
 	limpaEstrelas();
 	leCircuito(JSON.parse(circuitosFeitos[circuitoAtual]));
 	temporizador();	
@@ -150,6 +170,8 @@ function exibeEstrelas() {
 		comentarioEstrelas.innerText = 'Ufa!';
 	}
 
+	valorPontuacao += totalEstrelas;
+	pontuacao.innerText = valorPontuacao;
 	estrelas.style.setProperty('display', 'block');
 }
 
@@ -338,7 +360,7 @@ function alteraOutput() {
 		clearInterval(intervaloTemporizador);
 		exibeBtnProximo();
 		exibeEstrelas();
-		const music = new Audio('efeitos-sonoros/completou.wav'); music.play(); music.loop =false;
+		const music = new Audio('efeitos-sonoros/completou.wav'); music.play(); music.loop = false;
 		// music.playbackRate = 1;
 		// music.pause();
 

@@ -3,6 +3,13 @@
 	--elementosPorColuna: 10;
 }
 
+.alinhados {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100vh;
+}
+
 button {
 	background-color: seagreen;
 	color: #fff;
@@ -18,7 +25,6 @@ button:hover {
 	transform: scale(1.25);
 	transition: 1s;
 }
-
 
 .ilustracao {
 	width: 100px;
@@ -132,6 +138,10 @@ body {
 	display: inline-block;
 }
 
+.infoJogo i.pontuacao {
+	color: seagreen;
+}
+
 @keyframes moveTempo {
 	0% {
 		transform: rotateX(0deg);
@@ -228,16 +238,6 @@ body {
 	background-size: cover;
 }
 
-.on {
-	// outline: 1px solid green;
-}
-
-.alinhados {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
 #lampada {
 	max-width: 5%;
 	height: auto;
@@ -299,4 +299,8 @@ body {
 	.alinhados {
 		flex-direction: column;
 	}
+}
+
+#play {
+	cursor: pointer;
 }
