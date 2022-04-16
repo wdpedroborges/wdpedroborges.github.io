@@ -10,17 +10,47 @@
 </head>
 <body>
 
+<div class="bg-modal" id="modalInicial">
+	<div class="modal">
+		<img id="logo" src="logo.png">
+		<div class="texto">
+			<h2>Como jogar?</h2>
+			<p>O objetivo do jogo é tornar o circuito verdadeiro. Para isso, você deve fazer a corrente elétrica chegar até o final.</p>
+			<p>Clique no 1 para ativar a linha acima e clique no 0 para desativá-la.</p>
+			<p>A porta <strong>AND</strong>, ilustrada abaixo, exige que as duas linhas que se conectam a ela estejam ativas.</p>
+			<img class="ilustracao" src="elementos/and-preto.png">
+			<p>A porta <strong>OR</strong>, ilustrada abaixo, exige que pelo menos uma linha que se conecta a ela esteja ativa.</p>
+			<img class="ilustracao" src="elementos/or-preto.png">
+			<p>A porta <strong>NOT</strong> inverte o valor da linha conectada a ela. Se estiver ativa, então ela ficará desativada. Se estiver desativada, então ela ficará ativada.</p>
+			<img class="ilustracao" src="elementos/not-preto.png">
+			<p>Cada circuito possui um tempo determinado <i class="tempo bi bi-hourglass-split"></i>. Se o tempo acabar, você perde. Além disso, eles também possuem uma quantidade de bateria disponível <i class="bateria bi bi-battery-charging"></i>. Isso significa que a cada clique dado, você perde uma bateria. Se as baterias acabarem você perde.</p>
+			<p>A ideia é resolver o circuito no menor tempo possível e com a menor quantidade de cliques. Boa sorte.</p>
+			<button id="btnJogar">Jogar!</button>
+		</div>
+	</div>
+</div>
+
+<p id="motivoDerrota"></p>
+
+<div id="infoMusica">
+	<p>Você está ouvindo "Born a Rockstar (Instrumental)" por NEFFEX</p>
+</div>
+
 <div class="alinhados">
-	<div id="infoJogo">
-		<p><i class="bi bi-battery-charging"></i> 0</p>
-		<p><i class="bi bi-hourglass-split"></i> 00:00</p>
+	<img src="lampada-desligada.png" id="lampada">
+	<div class="infoJogo">
+		<p><i class="bateria bi bi-battery-charging"></i> <span id="bateria">0</span></p>
+		<p><i class="tempo bi bi-hourglass-split"></i> <span id="tempo">00:30</span></p>
 	</div>
 	<div id="jogo">
 		<div id="output">Indeterminado</div>
 		<div id="circuito"></div>
 		<div id="input"></div>
 	</div>
-	<img src="lampada-desligada.png" id="lampada">
+	<div class="infoJogo">
+		<p id="estrelas"><span id="comentarioEstrelas"></span></p>
+		<button id="btnProximo"><i class="bi bi-arrow-right"></i></button>
+	</div>
 </div>
 
 </body>

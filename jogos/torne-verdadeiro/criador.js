@@ -71,7 +71,7 @@ elementos.forEach(elemento => {
 		limpaElementos();
 		elementoClicado = elemento.getAttribute('title');
 		elementoCriado = objetoElemento();
-		elemento.style.border = '2px solid teal';
+		elemento.style.border = '2px solid seagreen';
 	})
 });
 
@@ -129,11 +129,21 @@ for (let i = 0; i < espacosElementos.length; i++) {
 				case 'cruz-quebrada-direita':
 					espacosElementos[i].style.backgroundImage = "url('elementos/cruz-quebrada-direita.png')";
 					break;
+				case 'remove':
+					espacosElementos[i].style.backgroundImage = "none";
+					for (let j = 0; j < listaElementos.length; j++) {
+						if (listaElementos[j].posicao === i) {
+							listaElementos.splice(j, 1);
+						}
+					}
+					break;
 			}
 
 			elementoCriado['elemento'] = elementoClicado;
 			elementoCriado['posicao'] = i;
-			listaElementos.push(elementoCriado);
+			if (elementoClicado !== 'remove') {
+				listaElementos.push(elementoCriado);
+			}
 			limpaElementos();
 		} else {
 			listaElementos[listaElementos.length - 1]['conexao'].push(i);

@@ -3,12 +3,104 @@
 	--elementosPorColuna: 10;
 }
 
+button {
+	background-color: seagreen;
+	color: #fff;
+	padding: 1rem;
+	border: none;
+	border-radius: 1rem;
+	font-size: 3rem;
+}
+
+button:hover {
+	cursor: pointer;
+	opacity: .75;
+	transform: scale(1.25);
+	transition: 1s;
+}
+
+
+.ilustracao {
+	width: 100px;
+}
+
+.bg-modal {
+	z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, .75);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal {
+	background-color: #fff;
+	padding: 1rem;
+	border-radius: 1rem;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 75vh;
+	width: 75%;
+	position: relative;
+}
+
+.modal p {
+	max-width: 65ch;
+	text-align: justify;
+	font-size: 1.2rem;
+}
+
+.modal .texto {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal #logo {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.bg-modal #btnJogar {
+	margin-top: 2rem;
+}
+
+#modalFinal {
+	display: none;
+}
+
 * {
-	font-family: Verdana;
+	font-family: monospace;
 }
 
 body {
-	background-color: lightyellow;
+	background-color: #111;
+	background-size: 400%;
+	animation: moveBg 15s infinite;
+}
+
+@keyframes moveBg {
+	0% {
+		background-position: 0% 0%;
+	}
+	50% {
+		background-position: 0% 50%;
+	}
+	75% {
+		background-position: 50% 75%;
+	}
+	90% {
+		background-position: 75% 50%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
 }
 
 #jogo {
@@ -16,24 +108,69 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: #212121;
+	background: rgba(0, 0, 0, .9);
 	overflow: hidden;
 	border-radius: 1rem;
-	box-shadow: 2px 2px 10px black;
-	border: 2px solid #fff;
 	width: calc(var(--elementosPorColuna) * var(--dimensaoElemento));
+	font-size: 1.5rem;
 }
 
-#infoJogo {
+.infoJogo {
 	font-size: 3rem;
 }
 
-#infoJogo i {
+.infoJogo #estrelas span {
+	font-size: 3rem;
+	display: block;
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.infoJogo i.tempo {
+	color: tomato;
+	animation: moveTempo 2s infinite;
+	display: inline-block;
+}
+
+@keyframes moveTempo {
+	0% {
+		transform: rotateX(0deg);
+	}
+	50% {
+		transform: rotateX(180deg);
+	}
+	100% {
+		transform: rotateX(360deg);
+	}
+}
+
+.infoJogo i.estrela {
+	color: yellow;
+}
+
+.bi-star-fill {
+	display: inline-block;
+	animation: pulso 1s infinite;	
+}
+
+@keyframes pulso {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.25);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.infoJogo i.bateria {
 	color: dodgerblue;
 }
 
-#infoJogo p {
-	color: #606060;
+.infoJogo p {
+	color: #fff;
 }
 
 #output, #input, #solucaoPerfeita, #estadoInicial {
@@ -56,7 +193,16 @@ body {
 
 #input {
 	background-color: #000;
-	color: #fff;
+	color: tomato;
+	border-top: 1px solid white;
+}
+
+.input {
+	border-right: 1px solid white;
+}
+
+.input:last-child {
+	border: none;
 }
 
 #output {
@@ -83,13 +229,70 @@ body {
 }
 
 .on {
-	outline: 1px solid green;
+	// outline: 1px solid green;
 }
 
 .alinhados {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+}
+
+#lampada {
+	max-width: 5%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	right: 5%;
+}
+
+#btnProximo, #estrelas {
+	display: none;
+}
+
+#btnProximo {
+	position: fixed;
+	bottom: 2%;
+	right: 2%;
+}
+
+#motivoDerrota {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: brown;
+	color: #fff;
+	padding: 1rem;
+	font-size: 2rem;
+	border-radius: 1rem;
+	width: 75%;
+	text-align: center;
+	box-shadow: 0 0 100px white;
+	border: 2px solid white;
+}
+
+#infoMusica {
+	background-color: seagreen;
+	color: #fff;
+	padding: 1rem;
+	border-radius: 1rem;
+	border: 2px solid #fff;
+	position: fixed;
+	bottom: 2%;
+	left: 2%;
+	width: 10vw;
+	display: none;
+}
+
+@keyframes moveLampada {
+	from {
+		transform: rotateZ(100deg);
+	}
+	to {
+		transform: rotateZ(180deg);
+	}
 }
 
 @media (max-width: 1000px) {

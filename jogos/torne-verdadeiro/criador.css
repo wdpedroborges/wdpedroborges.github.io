@@ -3,11 +3,18 @@
 }
 
 body {
-	background-color: lightyellow;
+	background-color: lightblue;
 }
 
 h1, h2, h3 {
 	text-align: center;
+}
+
+h2 {
+	background-color: seagreen;
+	color: #fff;
+	padding: .5rem;
+	border-radius: 1rem;
 }
 
 #jogo p {
