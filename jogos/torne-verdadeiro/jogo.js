@@ -39,6 +39,7 @@ function temporizador() {
 			clearInterval(intervaloTemporizador);
 			motivoDerrota.innerText = 'O seu tempo acabou :(';
 			motivoDerrota.style.setProperty('display', 'block');
+			derrota = true;
 		}
 	}, 1000);
 }
