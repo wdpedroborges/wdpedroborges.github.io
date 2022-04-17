@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="jogo.css">
 	<script type="text/javascript" src="jogo.js" defer></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="icon" href="icone.png">
 	<title>Torne Verdadeiro - Jogo</title>
 </head>
 <body>
@@ -30,16 +31,18 @@
 	</div>
 </div>
 
-<p id="motivoDerrota"></p>
+<p id="mensagem"></p>
 
 <div id="infoMusica">
-	<p>Você está ouvindo "The Itch (Instrumental) - NEFFEX" por NEFFEX</p>
+	<p>Você está ouvindo "Lazy Walk" por Cheel</p>
 </div>
 
 <div class="alinhados">
 	<img src="lampada-desligada.png" id="lampada">
 	<div class="infoJogo">
 		<p><i id="play" class="bi bi-pause"></i> <span>Música</span></p>
+		<p><i class="bi bi-boxes"></i> Fase <span id="fase"></span></p>
+		<p><i class="bi bi-graph-up-arrow"></i> <span id="desempenho">0.00%</span></p>
 		<p><i class="pontuacao bi bi-hand-thumbs-up"></i> <span id="pontuacao">0</span></p>
 		<p><i class="bateria bi bi-battery-charging"></i> <span id="bateria">0</span></p>
 		<p><i class="tempo bi bi-hourglass-split"></i> <span id="tempo">00:30</span></p>

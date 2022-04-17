@@ -13,14 +13,18 @@ const estrelas = document.querySelector('#estrelas');
 const comentarioEstrelas = document.querySelector('#comentarioEstrelas');
 const btnJogar = document.querySelector('#btnJogar');
 const modalInicial = document.querySelector('#modalInicial');
-const motivoDerrota = document.querySelector('#motivoDerrota');
+const mensagem = document.querySelector('#mensagem');
 const bateria = document.querySelector('#bateria');
 const tempo = document.querySelector('#tempo');
+const fase = document.querySelector('#fase');
+const desempenho = document.querySelector('#desempenho');
 const pontuacao = document.querySelector('#pontuacao');
 const infoMusica = document.querySelector('#infoMusica');
 const play = document.querySelector('#play');
 
-let tempoInicial = 30; // segundos
+let circuitosPassados = 0;
+
+let tempoInicial = 31; // segundos
 let tempoCorrente;
 let qtdeInicialBateria = 0;
 let qtdeBateria = 0;
@@ -33,23 +37,24 @@ let intervaloTemporizador;
 function temporizador() {
 	intervaloTemporizador = setInterval(() => {
 		if (tempoCorrente > 0) {
-			if (tempoCorrente < 10) {
-				tempo.innerText = `00:0${--tempoCorrente}`;
-			} else {
+			if (tempoCorrente >= 10) {
 				tempo.innerText = `00:${--tempoCorrente}`;
+			} else {
+				tempo.innerText = `00:0${--tempoCorrente}`;
 			}
 		} else {
 			clearInterval(intervaloTemporizador);
 			exibeBtnProximo();
-			motivoDerrota.innerText = 'O seu tempo acabou :(';
-			motivoDerrota.style.setProperty('display', 'block');
+			mensagem.innerText = 'O seu tempo acabou :(';
+			mensagem.style.setProperty('display', 'block');
 			derrota = true;
 			const music = new Audio('efeitos-sonoros/fracasso.wav'); music.play(); music.loop = false;
+			calculaDesempenho();
 		}
 	}, 1000);
 }
 
-const musicaFundo = new Audio('efeitos-sonoros/The Itch (Instrumental) - NEFFEX.mp3');
+const musicaFundo = new Audio('efeitos-sonoros/Lazy Walk - Cheel.mp3');
 btnJogar.addEventListener('click', () => {
 	modalInicial.style.setProperty('display', 'none');
 	
@@ -61,6 +66,7 @@ btnJogar.addEventListener('click', () => {
 	}, 3000);
 
 	leCircuito(JSON.parse(circuitosFeitos[circuitoAtual]));
+	fase.innerText = circuitoAtual + 1;
 	temporizador();
 });
 
@@ -79,25 +85,34 @@ play.addEventListener('click', () => {
 btnProximo.addEventListener('click', () => {
 	if (circuitoAtual < circuitosFeitos.length - 1) {
 		circuitoAtual++;
+
+		vitoria = false;
+		derrota = false;
+		mensagem.style.setProperty('display', 'none');
+		estrelas.style.setProperty('display', 'none');
+		btnProximo.style.setProperty('display', 'none');
+		fase.innerText = circuitoAtual + 1;
+		limpaEstrelas();
+		leCircuito(JSON.parse(circuitosFeitos[circuitoAtual]));
+		temporizador();	
 	} else {
-		circuitoAtual = 0;
+		mensagem.style.setProperty('background-color', 'seagreen');
+		mensagem.innerText = 'Parabéns, você chegou ao fim! Qual foi o seu desempenho?';
+		mensagem.style.setProperty('display', 'block');
 	}
-	vitoria = false;
-	derrota = false;
-	motivoDerrota.style.setProperty('display', 'none');
-	estrelas.style.setProperty('display', 'none');
-	btnProximo.style.setProperty('display', 'none');
-	limpaEstrelas();
-	leCircuito(JSON.parse(circuitosFeitos[circuitoAtual]));
-	temporizador();	
+
 });
 
-const DIMENSAO_ELEMENTO = '35px';
-const ELEMENTOS_POR_COLUNA = 10;
-const QUANTIDADE_ELEMENTOS = 150;
+// let dimensaoElemento = '35px';
+let elementosPorColuna = 10;
+let quantidadeElementos = 150;
 
-document.documentElement.style.setProperty('--dimensaoElemento', DIMENSAO_ELEMENTO);
-document.documentElement.style.setProperty('--elementosPorColuna', ELEMENTOS_POR_COLUNA);
+// if (window.innerWidth <= 720) {
+// 	dimensaoElemento = '25px';
+// }
+
+// document.documentElement.style.setProperty('--dimensaoElemento', dimensaoElemento);
+// document.documentElement.style.setProperty('--elementosPorColuna', elementosPorColuna);
 
 function exibeBtnProximo() {
 	btnProximo.style.setProperty('animation', 'pulso infinite 1s');
@@ -128,24 +143,19 @@ function colocaEstrelas(qtde, vazias = false) {
 }
 
 function exibeEstrelas() {
-
 	let qtdeCliques = qtdeInicialBateria - qtdeBateria;
 	let qtdeSolucaoPerfeita = qtdeInicialBateria - 2;
 	let totalEstrelas = 0;
 
-	if (qtdeCliques === qtdeSolucaoPerfeita) {
-		totalEstrelas += 3;
-	} else if (qtdeCliques === qtdeSolucaoPerfeita + 1) {
-		totalEstrelas += 2;
-	}  else if (qtdeCliques === qtdeSolucaoPerfeita + 2) {
+	if (tempoCorrente >= 0) {
 		totalEstrelas += 1;
-	}
-
-	if (tempoCorrente >= tempoInicial/2) {
+	} if (tempoCorrente >= 10) {
 		totalEstrelas += 1;
-	}
-
-	if (tempoCorrente >= (tempoInicial - tempoInicial/4)) {
+	} if (tempoCorrente >= 15) {
+		totalEstrelas += 1;
+	} if (tempoCorrente >= 20) {
+		totalEstrelas += 1;
+	} if (tempoCorrente >= 25) {
 		totalEstrelas += 1;
 	}
 
@@ -190,18 +200,12 @@ function defineBateria(estadoInicial, solucaoPerfeita) {
 		}
 	}
 
-	// entretanto, a quantia de bateria sempre será o ideal + 2
- 	// solução perfeita = 3 estrelas
- 	// solução perfeita - 1 = 2 estrelas
- 	// solução perfeita - 2 = 1 estrela
- 	// se for em metade do tempo, ganha 1 estrela a mais
- 	// se for em metade da metade, 2 estrelas 
-	return total + 2;
+	return total;
 }
 
 // cria os espaços do circuito
 function criaEspacosCircuito() {
-	for (let i = 0; i < QUANTIDADE_ELEMENTOS; i++) {
+	for (let i = 0; i < quantidadeElementos; i++) {
 		const espacoElemento = document.createElement('div');
 		espacoElemento.setAttribute('title', `${i}`);
 		espacoElemento.classList.add('espacoElemento');
@@ -210,7 +214,7 @@ function criaEspacosCircuito() {
 }
 // coloca os inputs
 function criaInputsCircuito() {
-	for (let i = 0; i < ELEMENTOS_POR_COLUNA; i++) {
+	for (let i = 0; i < elementosPorColuna; i++) {
 		const div = document.createElement('div');
 		div.classList.add('input');
 		div.innerText = 0;
@@ -251,13 +255,14 @@ function limpaCircuito() {
 
 // apenas lê o array com os objetos do circuito e insere os backgrounds nas devidas posições
 function leCircuito(circuitoJSON) {
+	circuitosPassados++;
 	limpaCircuito();
 	tempoCorrente = tempoInicial;
 	qtdeBateria = defineBateria(circuitoJSON.estadoInicial, circuitoJSON.solucaoPerfeita);
 	defineInputsCircuito(JSON.stringify(circuitoJSON.estadoInicial));
 	qtdeInicialBateria = qtdeBateria;
 	bateria.innerText = qtdeBateria;
-	body.style.setProperty('background-image', `url('bg-${(Math.random() * 4).toFixed(0)}.jpg')`);
+	// body.style.setProperty('background-image', `url('bg-${(Math.random() * 4).toFixed(0)}.jpg')`);
 	circuitoJSON = circuitoJSON.listaElementos;
 
 	for (let i = 0; i < circuitoJSON.length; i++) {
@@ -355,6 +360,10 @@ function propaga(circuitoJSON) {
 	}
 }
 
+function calculaDesempenho() {
+	desempenho.innerText = `${ (( valorPontuacao / (circuitosPassados * 5)) * 100).toFixed(2) }%`;
+}
+
 function alteraOutput() {
 	let verdadeiro = true;
 	for (let i = 0; i < 10; i++) {
@@ -377,9 +386,7 @@ function alteraOutput() {
 		exibeBtnProximo();
 		exibeEstrelas();
 		const music = new Audio('efeitos-sonoros/completou.wav'); music.play(); music.loop = false;
-		// music.playbackRate = 1;
-		// music.pause();
-
+		calculaDesempenho();
 	} else {
 		output.innerText = 'Falso';
 		output.style.backgroundColor = 'tomato';
@@ -416,13 +423,14 @@ for (let i = 0; i < inputs.length; i++) {
 			atualizaBateria();
 			propaga(JSON.parse(circuitosFeitos[circuitoAtual]).listaElementos);
 			alteraOutput();
-		} else if (qtdeBateria === 0) {
+		} else if (qtdeBateria === 0 && !derrota && !vitoria) {
 			exibeBtnProximo()
 			const music = new Audio('efeitos-sonoros/bateria.mp3'); music.play(); music.loop = false;
-			motivoDerrota.innerText = 'A sua bateria acabou :(';
-			motivoDerrota.style.setProperty('display', 'block');
+			mensagem.innerText = 'A sua bateria acabou :(';
+			mensagem.style.setProperty('display', 'block');
 			clearInterval(intervaloTemporizador);
 			derrota = true;
+			calculaDesempenho();
 		}
 	});
 }

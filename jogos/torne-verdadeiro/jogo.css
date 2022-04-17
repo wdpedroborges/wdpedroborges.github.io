@@ -3,6 +3,18 @@
 	--elementosPorColuna: 10;
 }
 
+* {
+	font-family: monospace;
+}
+
+body {
+	background-color: #111;
+	background-size: 400%;
+	animation: moveBg 15s infinite;
+	background: url('bg.jpg');
+	overflow: hidden;
+}
+
 .alinhados {
 	display: flex;
 	justify-content: space-around;
@@ -79,16 +91,6 @@ button:hover {
 
 #modalFinal {
 	display: none;
-}
-
-* {
-	font-family: monospace;
-}
-
-body {
-	background-color: #111;
-	background-size: 400%;
-	animation: moveBg 15s infinite;
 }
 
 @keyframes moveBg {
@@ -256,7 +258,7 @@ body {
 	right: 2%;
 }
 
-#motivoDerrota {
+#mensagem {
 	display: none;
 	position: fixed;
 	top: 0;
@@ -296,9 +298,62 @@ body {
 }
 
 @media (max-width: 1000px) {
-	.alinhados {
-		flex-direction: column;
-		height: auto;
+	#estrelas {
+		position: fixed;
+		width: 75%;
+		font-size: 2rem;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: rgba(0, 0, 0, .9);
+		padding: 1rem;
+		border-radius: 1rem;
+		border: 2px solid #fff;
+		text-align: center;
+	}
+
+	#infoMusica {
+		width: auto;
+		bottom: 75%;
+	}
+
+	#lampada {
+		max-width: 10%;
+		left: 5%;
+	}
+
+	.infoJogo {
+		font-size: 2rem;
+	}
+
+	:root {
+		--dimensaoElemento: 25px;
+	}
+
+}
+
+@media (max-width: 720px) {
+	.infoJogo {
+		font-size: 1.5rem;
+	}
+}
+
+@media (min-width: 1500px) {
+	:root {
+		--dimensaoElemento: 50px;
+	}
+	.infoJogo {
+		font-size: 5rem;
+	}
+
+	#output, .input {
+		height: 50px;
+		font-size: 3rem;
+		line-height: 100%;
+	}
+
+	.input, #ouput {
+		font-size: 3rem !important;
 	}
 }
 
