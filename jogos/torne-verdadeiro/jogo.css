@@ -43,7 +43,7 @@ button:hover {
 }
 
 .bg-modal {
-	z-index: 1000;
+	z-index: 100;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -57,7 +57,7 @@ button:hover {
 
 .modal {
 	background-color: #fff;
-	padding: 1rem;
+	padding: 2rem;
 	border-radius: 1rem;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -261,9 +261,9 @@ button:hover {
 #mensagem {
 	display: none;
 	position: fixed;
-	top: 0;
+	top: 50%;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
 	background-color: brown;
 	color: #fff;
 	padding: 1rem;
@@ -273,6 +273,7 @@ button:hover {
 	text-align: center;
 	box-shadow: 0 0 100px white;
 	border: 2px solid white;
+	z-index: 10;
 }
 
 #infoMusica {
@@ -298,6 +299,9 @@ button:hover {
 }
 
 @media (max-width: 1000px) {
+	body {
+		overflow: scroll;
+	}
 	.alinhados {
 		display: flex;
 		flex-direction: column;
@@ -345,7 +349,7 @@ button:hover {
 	}
 
 	:root {
-		--dimensaoElemento: 25px;
+		--dimensaoElemento: 30px;
 	}
 
 }
