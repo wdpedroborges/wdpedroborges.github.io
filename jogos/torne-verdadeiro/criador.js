@@ -129,6 +129,9 @@ for (let i = 0; i < espacosElementos.length; i++) {
 				case 'cruz-quebrada-direita':
 					espacosElementos[i].style.backgroundImage = "url('elementos/cruz-quebrada-direita.png')";
 					break;
+				case 't':
+					espacosElementos[i].style.backgroundImage = "url('elementos/t.png')";
+					break;
 				case 'remove':
 					espacosElementos[i].style.backgroundImage = "none";
 					for (let j = 0; j < listaElementos.length; j++) {

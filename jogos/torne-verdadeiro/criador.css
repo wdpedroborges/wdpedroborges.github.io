@@ -4,6 +4,7 @@
 
 body {
 	background-color: lightblue;
+	overflow: scroll;
 }
 
 h1, h2, h3 {
@@ -85,8 +86,8 @@ h2 {
 	outline: none;
 }
 
-@media (max-width: 720px) {
-	.alinhados {
+@media (max-width: 1000px) {
+	.alinhados-criador {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

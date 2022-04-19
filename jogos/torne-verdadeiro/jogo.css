@@ -298,6 +298,21 @@ button:hover {
 }
 
 @media (max-width: 1000px) {
+	.alinhados {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		height: auto;
+	}
+
+	#informacoesSuperiores {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+	}
+
 	#estrelas {
 		position: fixed;
 		width: 75%;
@@ -314,12 +329,15 @@ button:hover {
 
 	#infoMusica {
 		width: auto;
+		left: 50%;
 		bottom: 75%;
+		transform: translate(-50%, -75%);
 	}
 
 	#lampada {
 		max-width: 10%;
-		left: 5%;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	.infoJogo {
