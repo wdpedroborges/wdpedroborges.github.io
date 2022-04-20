@@ -108,12 +108,16 @@ nav {
 	justify-content: center;
 	background: var(--primeira-cor);
 	color: var(--terceira-cor);
-	height: 30vh;
+	height: 40vh;
+}
+
+#iconeMenuResponsivo {
+	display: none;
 }
 
 .logo {
 	margin: 1rem 0;
-	width: 10%;
+	width: 15%;
 	height: auto;
 }
 
@@ -131,6 +135,7 @@ nav ul {
 
 nav ul li i {
 	color: var(--segunda-cor);
+	font-size: 1.5rem;
 }
 
 nav ul li a {
@@ -267,7 +272,7 @@ footer a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 100;
+	z-index: 400;
 }
 
 .modal {
@@ -278,7 +283,6 @@ footer a {
 	background-color: var(--terceira-cor);
 	padding: 1rem;
 	border-radius: 1rem;
-	border: 2px solid var(--segunda-cor);
 	text-align: center;
 	position: relative;
 }
@@ -336,4 +340,49 @@ footer a {
 	border-radius: 1rem;
 	cursor: pointer;
 	border: 1px solid var(--segunda-cor);
+}
+
+@media (max-width: 1080px) {
+	nav ul {
+		position: fixed;
+		top: 0;
+		left: 0;
+		margin: 0;
+		border-right: 2px solid var(--segunda-cor);
+		z-index: 500;
+		height: 100vh;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--primeira-cor);
+		padding: 2rem;
+		display: none;
+	}
+
+	#menuPrimeiraParte {
+		position: relative;
+	}
+
+	#iconeMenuResponsivo {
+		display: block;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 10%;
+		font-size: 2.5rem;
+		cursor: pointer;
+		color: var(--segunda-cor);
+	}
+
+	.logo {
+		width: 50%;
+	}
+
+	.slide h3 {
+		font-size: 2rem;
+	}
+
+	.slide p {
+		font-size: 1rem;
+	}
 }

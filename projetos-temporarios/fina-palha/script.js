@@ -5,9 +5,27 @@ const btnAdicionarSacola = [... document.querySelectorAll('.btnAdicionarSacola')
 const valorProdutosSacola = document.querySelector('#valorProdutosSacola');
 const sacolaFlutuante = document.querySelector('#sacolaFlutuante');
 const tabelaSacola = document.querySelector('#tabelaSacola');
+const iconeMenuResponsivo = document.querySelector('#iconeMenuResponsivo');
+const menuResponsivo = document.querySelector('nav ul');
 
 let numeroProdutosSacola = 0;
 let produtosSacola = [];
+
+
+let abriuMenuResponsivo = false;
+iconeMenuResponsivo.addEventListener('click', () => {
+	if (!abriuMenuResponsivo) {
+		abriuMenuResponsivo = true;
+		iconeMenuResponsivo.classList.remove('bi-list');
+		iconeMenuResponsivo.classList.add('bi-x');
+		menuResponsivo.style.setProperty('display', 'block');
+	} else {
+		abriuMenuResponsivo = false;
+		iconeMenuResponsivo.classList.remove('bi-x');
+		iconeMenuResponsivo.classList.add('bi-list');
+		menuResponsivo.style.setProperty('display', 'none');
+	}
+});
 
 function exibeToast(texto) {
 	toast.innerText = texto;
