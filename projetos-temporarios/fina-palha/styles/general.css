@@ -301,6 +301,15 @@ footer a {
 	padding: 1rem;
 }
 
+#sacolaModal table td input {
+	font-size: 1rem;
+	text-align: center;
+}
+
+#btnLimparSacola {
+	background-color: tomato;
+}
+
 .modal .icone-fechar {
 	position: absolute;
 	top: 5%;
@@ -385,5 +394,10 @@ footer a {
 
 	.modal {
 		width: 95%;
+	}
+
+	#sacolaModal table {
+		width: 50%;
+		font-size: 1rem;
 	}
 }
