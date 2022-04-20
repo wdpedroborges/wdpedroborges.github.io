@@ -359,19 +359,16 @@ footer a {
 		display: none;
 	}
 
-	#menuPrimeiraParte {
-		position: relative;
-	}
-
 	#iconeMenuResponsivo {
 		display: block;
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		right: 10%;
+		position: fixed;
+		top: 0;
+		right: 0;
+		border-radius: 1rem 0 0 1rem;
 		font-size: 2.5rem;
 		cursor: pointer;
 		color: var(--segunda-cor);
+		background-color: var(--primeira-cor);
 	}
 
 	.logo {
@@ -379,10 +376,14 @@ footer a {
 	}
 
 	.slide h3 {
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 
 	.slide p {
 		font-size: 1rem;
+	}
+
+	.modal {
+		width: 95%;
 	}
 }
