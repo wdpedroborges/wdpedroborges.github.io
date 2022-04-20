@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fina Palha | Cigarros de palha</title>
+	<link rel="stylesheet" type="text/css" href="styles/general.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="icon" href="icone.png">
+	<script type="text/javascript" src="script.js" defer></script>
+</head>
+
+<div class="toast"></div>
+
+<div class="bg-modal" id="sacolaModal">
+	<div class="modal">
+		<i class="bi bi-x icone-fechar"></i>
+		<h2>Sacola</h2>
+		<table id="tabelaSacola">
+			<tr><th>Nome</th><th>Quantidade</th><th>Preço</th></tr>
+		</table>
+
+		<button id="btnFinalizarCompra">Finalizar compra</button>
+	</div>
+</div>
+
+<div class="bg-modal" id="produtoModal">
+	<div class="modal">
+		<i class="bi bi-x icone-fechar"></i>
+		<h2 id="tituloProdutoModal">Produto</h2>
+		<p id="descricaoProdutoModal"></p>
+		<img id="imgProdutoModal" src="">
+	</div>
+</div>
+
+<div id="sacolaFlutuante">
+	Sacola <i class="bi bi-bag"></i> <span id="valorProdutosSacola">0</span>
+</div>
+
+<body>
+	<header>
+		<nav>
+			<div id="menuPrimeiraParte">
+				<h1>Fina Palha</h1>
+				<img src="logo.jpg" class="logo">
+				<div id="containerBuscadorGeral">
+					<input type="search" placeholder="O que deseja encontrar?" name="buscadorGeral" id="buscadorGeral">
+					<i class="bi bi-search"></i>
+				</div>
+<!-- 				<h3>Minha conta <i class="bi bi-person-circle"></i></h3>
+				<h3>Sacola <i class="bi bi-bag"></i> <span id="valorProdutosSacola">0</span></h3> -->
+			</div>
+			<ul>
+				<li><i class="bi bi-basket"></i> <a href="#produtos">Produtos</a></li>
+				<li><i class="bi bi-shop"></i> <a href="">Sobre nós</a></li>
+				<li><i class="bi bi-hand-thumbs-up"></i> <a href="">Seja um afiliado</a></li>
+				<li><i class="bi bi-binoculars"></i> <a href="">Reastrear pedido</a></li>
+				<li><i class="bi bi-envelope"></i> <a href="">Contato</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div class="slider">
+			<div class="slide">
+				<h3>Produto de qualidade com filtro e piteira!</h3>
+				<p>Artesanal. Palhas selecionadas. Fumo de primeira qualidade.</p>
+			</div>
+		</div>
+
+		<section id="produtos">
+			<h2>Produtos</h2>
+			<div class="grid">
+				<div class="produto">
+					<img src="produtos/produto-1.png" class="imagemProduto">
+					<h3 class="tituloProduto">Produto 1</h3>
+					<span class="preco">R$17,90</span>
+					<button class="btnAdicionarSacola" title="Produto 1">Adicionar à sacola</button>
+				</div>
+				<div class="produto">
+					<img src="produtos/produto-2.png" class="imagemProduto">
+					<h3 class="tituloProduto">Produto 2</h3>
+					<span class="preco">R$10,90</span>
+					<button class="btnAdicionarSacola" title="Produto 2">Adicionar à sacola</button>
+				</div>
+				<div class="produto">
+					<img src="produtos/produto-3.png" class="imagemProduto">
+					<h3 class="tituloProduto">Produto 3</h3>
+					<span class="preco">R$15,90</span>
+					<button class="btnAdicionarSacola" title="Produto 3">Adicionar à sacola</button>
+				</div>
+				<div class="produto">
+					<img src="produtos/produto-4.png" class="imagemProduto">
+					<h3 class="tituloProduto">Produto 4</h3>
+					<span class="preco">R$12,90</span>
+					<button class="btnAdicionarSacola" title="Produto 4">Adicionar à sacola</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<img src="logo.jpg">
+		<h3>Fina Palha 2022 - Todos os direitos reservados.</h3>
+		<p>Desenvolvido por <a href="https://wdpedroborges.github.io" target="_blank">Pedro Borges</a></p>
+	</footer>
+</body>
+</html>
