@@ -18,6 +18,22 @@ h2 {
 	border-radius: 1rem;
 }
 
+.toast {
+	padding: 1rem;
+	background-color: seagreen;
+	width: 75%;
+	position: fixed;
+	top: 5%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 2px solid #fff;
+	border-radius: 1rem;
+	box-shadow: 0 0 100px #fff;
+	color: #fff;
+	text-align: center;
+	display: none;
+}
+
 #jogo p {
 	font-size: 12px;
 	color: #fff;

@@ -97,7 +97,7 @@ btnProximo.addEventListener('click', () => {
 		temporizador();	
 	} else {
 		mensagem.style.setProperty('background-color', 'seagreen');
-		mensagem.innerText = 'Parabéns, você chegou ao fim! Qual foi o seu desempenho?';
+		mensagem.innerText = `Parabéns, você chegou ao fim! Seu desempenho foi de ${desempenho.innerText}`;
 		mensagem.style.setProperty('display', 'block');
 	}
 

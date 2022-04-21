@@ -94,7 +94,13 @@ for (let i = 0; i < espacosElementos.length; i++) {
 					espacosElementos[i].style.backgroundImage = "url('elementos/linha-central-vertical.png')";
 					break;
 				case 'linha-lateral-esquerda':
-					espacosElementos[i].style.backgroundImage = "url('elementos/linha-lateral-esquerda.png')";
+					if (i > 140) {
+						elementoClicado = 'linha-central-vertical';
+						espacosElementos[i].style.backgroundImage = "url('elementos/linha-central-vertical.png')";
+					} else {
+						espacosElementos[i].style.backgroundImage = "url('elementos/linha-lateral-esquerda.png')";
+					}
+
 					break;
 				case 'linha-lateral-direita':
 					espacosElementos[i].style.backgroundImage = "url('elementos/linha-lateral-direita.png')";
@@ -141,7 +147,7 @@ for (let i = 0; i < espacosElementos.length; i++) {
 					}
 					break;
 			}
-
+			espacosElementos[i].classList.add('elemento-presente');
 			elementoCriado['elemento'] = elementoClicado;
 			elementoCriado['posicao'] = i;
 			if (elementoClicado !== 'remove') {
@@ -149,12 +155,23 @@ for (let i = 0; i < espacosElementos.length; i++) {
 			}
 			limpaElementos();
 		} else {
-			listaElementos[listaElementos.length - 1]['conexao'].push(i);
-			alert(`Conexão informada para ${listaElementos[listaElementos.length - 1]['elemento']}.`);	
+			if (espacosElementos[i].classList.contains('elemento-presente')) {
+				listaElementos[listaElementos.length - 1]['conexao'].push(i);
+				exibeToast(`Conexão informada para ${formataNomes(listaElementos[listaElementos.length - 1]['elemento'])}.`);
+			} else {
+				exibeToast('Primeiro selecione um elemento para inserir no espaço vazio.', 'purple');
+			}
 		}
 		codigoFinal.listaElementos = listaElementos;
 		codigo.value = JSON.stringify(codigoFinal);
 	})
+}
+
+function formataNomes(nome) {
+	nome = nome.replaceAll('-', ' ');
+	nome = nome.toUpperCase();
+
+	return nome;
 }
 
 // event listeners nos inputs de solução perfeita
@@ -184,4 +201,14 @@ for (let i = 0; i < inputsEstadoInicial.length; i++) {
 		}
 		codigo.value = JSON.stringify(codigoFinal);
 	});
+}
+
+function exibeToast(conteudo, bg = 'seagreen') {
+	const toast = document.querySelector('.toast');
+	toast.style.setProperty('background-color', bg);
+	toast.style.setProperty('display', 'block');
+	toast.innerText = conteudo;
+	setTimeout(() => {
+		toast.style.setProperty('display', 'none');
+	}, 1000);
 }

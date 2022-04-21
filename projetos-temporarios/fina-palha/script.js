@@ -57,23 +57,46 @@ function distingueElementosArray(array) {
 }
 
 function limpaSacola() {
-	numeroProdutosSacola = 0;
-	valorProdutosSacola.innerText = numeroProdutosSacola;
-	produtosSacola = [];
-	limpaTabelaSacola();
-	sacolaModal.style.setProperty('display', 'none');
-	exibeToast('A sacola foi limpa com sucesso.');
+	if (produtosSacola.length > 0) {
+		numeroProdutosSacola = 0;
+		valorProdutosSacola.innerText = numeroProdutosSacola;
+		produtosSacola = [];
+		limpaTabelaSacola();
+		sacolaModal.style.setProperty('display', 'none');
+		exibeToast('A sacola foi limpa com sucesso.');
+	} else {
+		sacolaModal.style.setProperty('display', 'none');
+		exibeToast('A sacola já está vazia. Que tal colocar alguma coisa nela?');
+	}
+	
+}
+
+function removeQuantidadesNulas(array) {
+	novoArray = [];
+
+	array.forEach(elemento => {
+		if (parseInt(elemento.quantidade) > 0) {
+			novoArray.push(elemento);
+		}
+	});
+
+	return novoArray;
 }
 
 function finalizaCompra() {
-	let inputsTabela = [... document.querySelectorAll('table tr td input')];
+	if (produtosSacola.length > 0) {
+		let inputsTabela = [... document.querySelectorAll('td input')];
 
-	objetosProdutosSacola.forEach( (objeto, index) => {
-		objeto.quantidade = inputsTabela[index].value;
-	});
+		objetosProdutosSacola.forEach( (objeto, index) => {
+			objeto.quantidade = inputsTabela[index].value;
+		});
 
-	console.log(objetosProdutosSacola);
-	return objetosProdutosSacola;
+		exibeToast('Compra finalizada com sucesso.');
+	} else {
+		exibeToast('A sacola está vazia.');
+	}
+
+	return removeQuantidadesNulas(objetosProdutosSacola);
 }
 
 function criaObjetosProdutos(distinguidos) {
@@ -102,6 +125,7 @@ function verificaProdutosSacola(produtosSacola) {
 }
 
 function insereProdutosTabelaSacola(produtos) {
+	// buscar aqui os preços no banco de dados
 	limpaTabelaSacola();
 	for (let i = 0; i < produtos.length; i++) {
 		let linha = document.createElement('tr');
@@ -148,6 +172,17 @@ function insereProdutosTabelaSacola(produtos) {
 			numeroProdutosSacola -= resultado[1];
 			valorProdutosSacola.innerText = numeroProdutosSacola;
 			objetosProdutosSacola = verificaProdutosSacola(produtosSacola);
+
+			exibeToast('Item removido com sucesso.');
+		});
+	});
+
+	const tdInput = [... document.querySelectorAll('td input')];
+	tdInput.forEach(input => {
+		input.addEventListener('change', () => {
+			if (parseInt(input.value) < 1) {
+				input.value = 1;
+			}
 		});
 	});
 }
@@ -161,7 +196,7 @@ function limpaTabelaSacola() {
 	let acao = document.createElement('th');
 	nome.innerText = 'Nome';
 	quantidade.innerText = 'Quantidade';
-	preco.innerText = 'Preço';
+	preco.innerText = 'Preço (R$)';
 	acao.innerText = 'Ação';
 	cabecalho.append(nome, quantidade, preco, acao);
 	tabelaSacola.append(cabecalho);
