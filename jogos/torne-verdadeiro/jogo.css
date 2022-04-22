@@ -284,18 +284,30 @@ button:hover {
 	display: none;
 	position: fixed;
 	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	left: 10%;
 	background-color: brown;
 	color: #fff;
 	padding: 1.5rem;
 	font-size: 2rem;
-	border-radius: 1rem 5rem;
+	border-radius: 1rem;
 	width: 75%;
 	text-align: center;
 	box-shadow: 0 0 100px black;
 	border: 5px solid #fff;
 	z-index: 10;
+	animation: animacaoMensagem 5s infinite;
+}
+
+@keyframes animacaoMensagem {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	50% {
+		transform: rotateZ(5deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
 }
 
 #infoMusica {
