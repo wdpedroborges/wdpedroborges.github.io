@@ -5,11 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="jogo.css">
 	<link rel="stylesheet" type="text/css" href="criador.css">
+	<link rel="stylesheet" type="text/css" href="loader.css">
 	<script type="text/javascript" src="criador.js" defer></script>
 	<link rel="icon" href="icone.png">
 	<title>Torne Verdadeiro - Criador</title>
 </head>
 <body>
+
+<div id="loader">
+	<div class="spinner">
+		<div></div>
+		<div></div>
+	</div>
+</div>
 
 <h2>Torne Verdadeiro - Criador de Circuitos</h2>
 
@@ -19,28 +27,30 @@
 	<div id="elementosCriacao">
 		<div class="alinhados-criador">
 			<img src="elementos/linha-central-vertical.png" class="elemento" title="linha-central-vertical">
-			<img src="elementos/linha-lateral-esquerda.png" class="elemento" title="linha-lateral-esquerda">
-			<img src="elementos/linha-lateral-direita.png" class="elemento" title="linha-lateral-direita">
-			<img src="elementos/linha-recentralizadora-esquerda.png" class="elemento" title="linha-recentralizadora-esquerda">
-			<img src="elementos/linha-recentralizadora-direita.png" class="elemento" title="linha-recentralizadora-direita">
-		</div>
-		<div class="alinhados-criador">
+			<img src="elementos/linha-central-horizontal.png" class="elemento" title="linha-central-horizontal">
 			<img src="elementos/primeiro-canto.png" class="elemento" title="primeiro-canto">
 			<img src="elementos/segundo-canto.png" class="elemento" title="segundo-canto">
+		</div>
+		<div class="alinhados-criador">
 			<img src="elementos/terceiro-canto.png" class="elemento" title="terceiro-canto">
 			<img src="elementos/quarto-canto.png" class="elemento" title="quarto-canto">
-			<img src="elementos/linha-central-horizontal.png" class="elemento" title="linha-central-horizontal">
-		</div>
-		<div class="alinhados-criador">
 			<img src="elementos/cruz.png" class="elemento" title="cruz">
 			<img src="elementos/cruz-quebrada-esquerda.png" class="elemento" title="cruz-quebrada-esquerda">
-			<img src="elementos/cruz-quebrada-direita.png" class="elemento" title="cruz-quebrada-direita">
-			<img src="elementos/t.png" class="elemento" title="t">
 		</div>
 		<div class="alinhados-criador">
+			<img src="elementos/cruz-quebrada-direita.png" class="elemento" title="cruz-quebrada-direita">
+			<img src="elementos/t.png" class="elemento" title="t">
 			<img src="elementos/not.png" class="elemento" title="not">
 			<img src="elementos/and.png" class="elemento" title="and">
+		</div>
+		<div class="alinhados-criador">
 			<img src="elementos/or.png" class="elemento" title="or">
+			<img src="elementos/nand.png" class="elemento" title="nand">
+			<img src="elementos/xor.png" class="elemento" title="xor">
+		</div>
+		<div>
+			<img src="elementos/nor.png" class="elemento" title="nor">
+			<img src="elementos/xnor.png" class="elemento" title="xnor">
 			<img src="elementos/remove.png" class="elemento" title="remove">
 		</div>
 	</div>
@@ -48,16 +58,22 @@
 	<div id="jogo">
 		<div id="output">Indeterminado</div>
 		<div id="circuito"></div>
-		
-		<div id="estadoInicial" title="Aqui você deve informar o estado inicial do seu circuito (de preferência, com mais cliques)"></div>
-		<p>Defina acima o <strong>estado inicial</strong> do circuito.</p>
 		<div id="solucaoPerfeita" title="Aqui você deve informar a solução perfeita (com menos cliques) para o circuito que você criou."></div>
 		<p>Defina acima a <strong>solução perfeita</strong> para o circuito.</p>
+		<button id="btnVerificarSolucoesPossiveis">Soluções possíveis</button>
 	</div>
 </div>
 
 <h2>Código:</h2>
 <textarea id="codigo"></textarea>
+
+<script type="text/javascript">
+const loader = document.getElementById('loader');
+window.addEventListener('load', () => {
+	loader.style.display = 'none';
+});
+</script>
+
 
 </body>
 </html>

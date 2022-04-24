@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="jogo.css">
+	<link rel="stylesheet" type="text/css" href="loader.css">
 	<script type="text/javascript" src="jogo.js" defer></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link rel="icon" href="icone.png">
@@ -11,11 +12,17 @@
 </head>
 <body>
 
+<div id="loader">
+	<div class="spinner">
+		<div></div>
+		<div></div>
+	</div>
+</div>
+
 <div id="toast"></div>
 
-<div class="bg-modal" id="modalInicial">
+<div class="bg-modal" id="modalAjuda">
 	<div class="modal">
-		<img id="logo" src="logo.png">
 		<div class="texto">
 			<h2>Como jogar?</h2>
 			<p>O objetivo do jogo é tornar o circuito verdadeiro. Para isso, você deve fazer a corrente elétrica chegar até o final.</p>
@@ -26,16 +33,70 @@
 			<img class="ilustracao" src="elementos/or-preto.png">
 			<p>A porta <strong>NOT</strong> inverte o valor da linha conectada a ela. Se estiver ativa, então ela ficará desativada. Se estiver desativada, então ela ficará ativada.</p>
 			<img class="ilustracao" src="elementos/not-preto.png">
+			<p>A porta <strong>XOR</strong> exige que só uma conexão esteja ativa.</p>
+			<img class="ilustracao" src="elementos/xor-preto.png">
+			<p>A porta <strong>NOR</strong> exige que nenhuma conexão esteja ativa.</p>
+			<img class="ilustracao" src="elementos/nor-preto.png">
+			<p>A porta <strong>XNOR</strong> exige que ou ambas as conexões estejam ativas ou ambas estejam falsas.</p>
+			<img class="ilustracao" src="elementos/xnor-preto.png">
+			<p>A porta <strong>NAND</strong> só será falsa se ambas as suas conexões forem verdadeiras.</p>
+			<img class="ilustracao" src="elementos/xnor-preto.png">
 			<p>Cada circuito possui um tempo determinado <i class="tempo bi bi-hourglass-split"></i>. Se o tempo acabar, você perde. Além disso, eles também possuem uma quantidade de bateria disponível <i class="bateria bi bi-battery-charging"></i>. Isso significa que a cada clique dado, você perde uma bateria. Se as baterias acabarem você perde.</p>
 			<p>A ideia é resolver o circuito no menor tempo possível e com a menor quantidade de cliques. Boa sorte.</p>
+			<button id="btnEntendi">Entendi</button>
+		</div>		
+	</div>
+</div>
 
-			<p>Créditos pela foto de fundo para <a href="https://www.instagram.com/frankconephotos/" target="_blank">Frank Cone</a> no <a href="https://www.pexels.com/pt-br" target="_blank">Pexels</a></p>
+<div class="bg-modal" id="modalInicial">
+	<div class="modal">
+		<img id="logo" src="logo.png">
+		<div class="texto">
+			<details>
+				<summary>Como jogar?</summary>
+				<p>O objetivo do jogo é tornar o circuito verdadeiro. Para isso, você deve fazer a corrente elétrica chegar até o final.</p>
+				<p>Clique no 1 para ativar a linha acima e clique no 0 para desativá-la.</p>
+				<p>A porta <strong>AND</strong>, ilustrada abaixo, exige que as duas linhas que se conectam a ela estejam ativas.</p>
+				<img class="ilustracao" src="elementos/and-preto.png">
+				<p>A porta <strong>OR</strong>, ilustrada abaixo, exige que pelo menos uma linha que se conecta a ela esteja ativa.</p>
+				<img class="ilustracao" src="elementos/or-preto.png">
+				<p>A porta <strong>NOT</strong> inverte o valor da linha conectada a ela. Se estiver ativa, então ela ficará desativada. Se estiver desativada, então ela ficará ativada.</p>
+				<img class="ilustracao" src="elementos/not-preto.png">
+				<p>A porta <strong>XOR</strong> exige que só uma conexão esteja ativa.</p>
+				<img class="ilustracao" src="elementos/xor-preto.png">
+				<p>A porta <strong>NOR</strong> exige que nenhuma conexão esteja ativa.</p>
+				<img class="ilustracao" src="elementos/nor-preto.png">
+				<p>A porta <strong>XNOR</strong> exige que ou ambas as conexões estejam ativas ou ambas estejam falsas.</p>
+				<img class="ilustracao" src="elementos/xnor-preto.png">
+				<p>A porta <strong>NAND</strong> só será falsa se ambas as suas conexões forem verdadeiras.</p>
+				<img class="ilustracao" src="elementos/xnor-preto.png">
+				<p>Cada circuito possui um tempo determinado <i class="tempo bi bi-hourglass-split"></i>. Se o tempo acabar, você perde. Além disso, eles também possuem uma quantidade de bateria disponível <i class="bateria bi bi-battery-charging"></i>. Isso significa que a cada clique dado, você perde uma bateria. Se as baterias acabarem você perde.</p>
+				<p>A ideia é resolver o circuito no menor tempo possível e com a menor quantidade de cliques. Boa sorte.</p>
+			</details>
 
-			<p>Ícone de fogo criado por  <a href="https://www.flaticon.com/free-icons/fire" target="_blank">Vectors Market</a> no <a href="https://www.flaticon.com" target="_blank">Flaticon</a></p>
+			<div class="inputs-iniciais" id="divDificuldade">
+				<h3>Dificuldade:</h3>
+				<p><input type="radio" name="radioDificuldade" id="dificuldadeNormal" value="normal" checked><label for="dificuldadeNormal"> Normal <span class="explicacao">(1 bateria extra para cada fase)</span></label></p>
+				<p><input type="radio" name="radioDificuldade" id="dificuldadeDificil" value="dificil"><label for="dificuldadeDificil"> Difícil <span class="explicacao">(nenhuma bateria extra e 20 segundos de tempo)</span></label></p>
+				<p><input type="radio" name="radioDificuldade" id="dificuldadeMuitoDificil" value="muito-dificil"><label for="dificuldadeMuitoDificil"> Muito difícil <span class="explicacao">(nenhuma bateria extra, 15 segundos de tempo e sem cor verde nos fios)</span></label></p>
+			</div>
 
-			<p>Efeitos sonoros obtidos em <a href="https://freesound.org">Free Sound</a></p>
+			<div class="inputs-iniciais" id="divModoJogo">
+				<h3>Modo de jogo:</h3>
+				<p><input type="radio" name="radioModoJogo" id="modoProgressivo" value="progressivo" checked><label for="modoProgressivo"> Progressivo <span class="explicacao">(até onde você consegue chegar)</span></label></p>
+				<p><input type="radio" name="radioModoJogo" id="modoInfinito" value="infinito"><label for="modoInfinito"> Infinito</label></p>
+				<p><input type="radio" name="radioModoJogo" id="modoTreino" value="treino"><label for="modoTreino"> Treino <span class="explicacao">(exibe os portões individualmente, sem limite de bateria)</span></label></p>
+				<p><input type="radio" name="radioModoJogo" id="modoPersonalizado" value="personalizado"><label for="modoPersonalizado"> Personalizado <span class="explicacao">(insira seu próprio conjunto de circuitos)</span></label></p>
+			</div>
 
 			<button id="btnJogar">Jogar!</button>
+
+
+			<div id="creditos">
+				<p>Créditos pela foto de fundo para <a href="https://www.instagram.com/frankconephotos/" target="_blank">Frank Cone</a> no <a href="https://www.pexels.com/pt-br" target="_blank">Pexels</a></p>
+				<p>Ícone de fogo criado por  <a href="https://www.flaticon.com/free-icons/fire" target="_blank">Vectors Market</a> no <a href="https://www.flaticon.com" target="_blank">Flaticon</a></p>
+				<p>Efeitos sonoros obtidos em <a href="https://freesound.org">Free Sound</a></p>
+			</div>
 		</div>
 	</div>
 </div>
@@ -47,17 +108,19 @@
 </div>
 
 <div class="alinhados">
-	<img src="lampada-desligada.png" id="lampada">
 	<div class="infoJogo" id="informacoesSuperiores">
 		<div>
 			<p><i id="play" class="bi bi-pause"></i> <span title="música">Música</span></p>
-			<p><i class="bi bi-boxes"></i> Fase <span id="fase" title="fase"></span></p>
+			<p id="pFase"><i class="bi bi-boxes"></i> Fase <span id="fase" title="fase"></span></p>
 			<p><i class="bi bi-graph-up-arrow"></i> <span id="desempenho" title="desempenho">0.00%</span></p>
 		</div>
 		<div>
 			<p><i class="pontuacao bi bi-hand-thumbs-up"></i> <span id="pontuacao" title="pontuação">0</span></p>
 			<p><i class="bateria bi bi-battery-charging"></i> <span id="bateria" title="bateria">0</span></p>
 			<p><i class="tempo bi bi-hourglass-split"></i> <span id="tempo" title="tempo">00:30</span></p>
+		</div>
+		<div>
+			<p><i class="bi bi-info-circle"></i> <span id="opcaoAjuda">Ajuda</span></p>
 		</div>
 	</div>
 	<div id="jogo">
@@ -70,6 +133,13 @@
 		<button id="btnProximo"><i class="bi bi-arrow-right"></i></button>
 	</div>
 </div>
+
+<script type="text/javascript">
+const loader = document.getElementById('loader');
+window.addEventListener('load', () => {
+	loader.style.display = 'none';
+});
+</script>
 
 </body>
 </html>
