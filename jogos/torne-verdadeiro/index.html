@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<div id="elementosPagina"></div>
+
 <div id="loader">
 	<div class="spinner">
 		<div></div>
@@ -78,7 +80,7 @@
 				<h3>Dificuldade:</h3>
 				<p><input type="radio" name="radioDificuldade" id="dificuldadeNormal" value="normal" checked><label for="dificuldadeNormal"> Normal <span class="explicacao">(1 bateria extra para cada fase)</span></label></p>
 				<p><input type="radio" name="radioDificuldade" id="dificuldadeDificil" value="dificil"><label for="dificuldadeDificil"> Difícil <span class="explicacao">(nenhuma bateria extra e 20 segundos de tempo)</span></label></p>
-				<p><input type="radio" name="radioDificuldade" id="dificuldadeMuitoDificil" value="muito-dificil"><label for="dificuldadeMuitoDificil"> Muito difícil <span class="explicacao">(nenhuma bateria extra, 15 segundos de tempo e sem cor verde nos fios)</span></label></p>
+				<p><input type="radio" name="radioDificuldade" id="dificuldadeMuitoDificil" value="muito-dificil"><label for="dificuldadeMuitoDificil"> Muito difícil <span class="explicacao">(nenhuma bateria extra, 10 segundos de tempo e sem cor verde nos fios)</span></label></p>
 			</div>
 
 			<div class="inputs-iniciais" id="divModoJogo">
@@ -117,7 +119,7 @@
 		<div>
 			<p><i class="pontuacao bi bi-hand-thumbs-up"></i> <span id="pontuacao" title="pontuação">0</span></p>
 			<p><i class="bateria bi bi-battery-charging"></i> <span id="bateria" title="bateria">0</span></p>
-			<p><i class="tempo bi bi-hourglass-split"></i> <span id="tempo" title="tempo">00:30</span></p>
+			<p><i class="tempo bi bi-hourglass-split"></i> <span id="tempo" title="tempo">...</span></p>
 		</div>
 		<div>
 			<p><i class="bi bi-info-circle"></i> <span id="opcaoAjuda">Ajuda</span></p>

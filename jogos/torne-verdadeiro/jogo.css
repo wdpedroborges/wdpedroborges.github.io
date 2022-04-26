@@ -36,6 +36,10 @@ body {
 	animation: moveBg 10s infinite;
 }
 
+#elementosPagina {
+	display: none;
+}
+
 #toast {
 	position: fixed;
 	top: 2.5%;
@@ -419,8 +423,8 @@ span.explicacao {
 
 	#informacoesSuperiores {
 		display: flex;
-		justify-content: space-around;
-		align-items: center;
+		justify-content: space-between;
+		align-items: space-around;
 		width: 100%;
 	}
 

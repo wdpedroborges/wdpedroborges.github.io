@@ -22,6 +22,60 @@ const modalAjuda = document.querySelector('#modalAjuda');
 const opcaoAjuda = document.querySelector('#opcaoAjuda');
 const btnEntendi = document.querySelector('#btnEntendi');
 
+let elementosLinhasPagina = ['linha-central-vertical', 'linha-central-horizontal', 'linha-lateral-direita', 'linha-lateral-esquerda', 'linha-recentralizadora-direita', 'linha-recentralizadora-esquerda', 'primeiro-canto', 'segundo-canto', 'terceiro-canto', 'quarto-canto', 'cruz', 'cruz-quebrada-direita', 'cruz-quebrada-esquerda', 't'];
+
+let elementosPortoesPagina = ['primeiro-and', 'segundo-and', 'primeiro-or', 'segundo-or', 'primeiro-nand', 'segundo-nand', 'primeiro-nor', 'segundo-nor', 'primeiro-xor', 'segundo-xor', 'primeiro-xnor', 'segundo-xnor'];
+
+const elementosPagina = document.querySelector('#elementosPagina');
+
+function uneArrays(lista1, lista2) {
+    let uniao = [];
+
+    for (let i = 0; i < lista1.length; i++) {
+        uniao.push(lista1[i]);
+    }
+
+    for (let i = 0; i < lista2.length; i++) {
+        uniao.push(lista2[i]);
+    }
+
+    return uniao; 
+}
+
+function complementaNomes(lista, complemento) {
+    for (let i = 0; i < lista.length; i++) {
+        lista[i] = `${lista[i]}${complemento}`;
+    }
+
+    return lista;
+}
+
+function duplicaNomesComplemento(lista, complemento) {
+    let listaComplementada = [];
+
+    for (let i = 0; i < lista.length; i++) {
+        listaComplementada.push(`${lista[i]}`);
+    }
+
+    for (let i = 0; i < lista.length; i++) {
+        listaComplementada.push(`${lista[i]}${complemento}`);
+    }
+
+    return listaComplementada;
+}
+
+elementosLinhasPagina = duplicaNomesComplemento(elementosLinhasPagina, '-on');
+elementosLinhasPagina = complementaNomes(elementosLinhasPagina, '.png');
+elementosPortoesPagina = complementaNomes(elementosPortoesPagina, '.png');
+
+let listaElementosPagina = uneArrays(elementosLinhasPagina, elementosPortoesPagina);
+
+for (let i = 0; i < listaElementosPagina.length; i++) {
+    const img = document.createElement('img');
+    img.setAttribute('src', `elementos/${listaElementosPagina[i]}`);
+    elementosPagina.append(img);
+}
+
 let circuitoAtual = 0;
 let circuitosPassados = 0;
 let tempoInicial = 31; // segundos
@@ -49,9 +103,9 @@ function temporizador() {
 	intervaloTemporizador = setInterval(() => {
 		if (tempoCorrente > 0) {
 			if (tempoCorrente >= 10) {
-				tempo.innerText = `00:${--tempoCorrente}`;
+				tempo.innerText = `${--tempoCorrente}`;
 			} else {
-				tempo.innerText = `00:0${--tempoCorrente}`;
+				tempo.innerText = `${--tempoCorrente}`;
 			}
 		} else {
 			clearInterval(intervaloTemporizador);
@@ -73,12 +127,16 @@ btnJogar.addEventListener('click', () => {
     modoJogo = document.querySelector('input[name="radioModoJogo"]:checked').value
 
     if (dificuldade === 'dificil') {
-        tempoInicial = 21;
+        tempoInicial = 20;
     } else if (dificuldade === 'muito-dificil') {
-        tempoInicial = 16;
+        tempoInicial = 10;
     }
 
-    if (modoJogo === 'infinito') {
+ 	if (modoJogo === 'treino') {
+ 		tempoInicial = 60;
+ 	}
+
+    if (modoJogo === 'infinito' || modoJogo === 'treino') {
         const pFase = document.querySelector('#pFase');
         pFase.style.setProperty('display', 'none');
     }
@@ -88,7 +146,7 @@ btnJogar.addEventListener('click', () => {
         	// Fase 1
         	'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"linha-central-vertical","posicao":135,"conexao":[145]},{"elemento":"linha-central-vertical","posicao":125,"conexao":[135]},{"elemento":"linha-central-vertical","posicao":115,"conexao":[125]},{"elemento":"linha-central-vertical","posicao":105,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":95,"conexao":[105]},{"elemento":"linha-central-vertical","posicao":85,"conexao":[95]},{"elemento":"linha-central-vertical","posicao":75,"conexao":[85]},{"elemento":"linha-central-vertical","posicao":65,"conexao":[75]},{"elemento":"linha-central-vertical","posicao":55,"conexao":[65]},{"elemento":"linha-central-vertical","posicao":45,"conexao":[55]},{"elemento":"linha-central-vertical","posicao":35,"conexao":[45]},{"elemento":"linha-central-vertical","posicao":25,"conexao":[35]},{"elemento":"linha-central-vertical","posicao":15,"conexao":[25]},{"elemento":"linha-central-vertical","posicao":5,"conexao":[15]}],"posicaoElementosIniciais":[145],"solucoesPossiveis":[["0","0","0","0","0","1","0","0","0","0"]]}',
         	// Fase 2
-        	'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":144,"conexao":[]},{"elemento":"cruz","posicao":134,"conexao":[144]},{"elemento":"linha-central-vertical","posicao":124,"conexao":[134]},{"elemento":"linha-central-vertical","posicao":114,"conexao":[124]},{"elemento":"linha-central-vertical","posicao":104,"conexao":[114]},{"elemento":"linha-central-vertical","posicao":94,"conexao":[104]},{"elemento":"linha-central-vertical","posicao":84,"conexao":[94]},{"elemento":"linha-central-vertical","posicao":74,"conexao":[84]},{"elemento":"linha-central-vertical","posicao":64,"conexao":[74]},{"elemento":"linha-central-vertical","posicao":54,"conexao":[64]},{"elemento":"linha-central-vertical","posicao":44,"conexao":[54]},{"elemento":"linha-central-vertical","posicao":34,"conexao":[44]},{"elemento":"linha-central-vertical","posicao":24,"conexao":[34]},{"elemento":"linha-central-vertical","posicao":14,"conexao":[24]},{"elemento":"linha-central-vertical","posicao":4,"conexao":[14]},{"elemento":"primeiro-canto","posicao":135,"conexao":[134]},{"elemento":"linha-central-vertical","posicao":125,"conexao":[135]},{"elemento":"linha-central-vertical","posicao":115,"conexao":[125]},{"elemento":"linha-central-vertical","posicao":105,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":95,"conexao":[105]},{"elemento":"linha-central-vertical","posicao":85,"conexao":[95]},{"elemento":"linha-central-vertical","posicao":75,"conexao":[85]},{"elemento":"linha-central-vertical","posicao":65,"conexao":[75]},{"elemento":"linha-central-vertical","posicao":55,"conexao":[65]},{"elemento":"linha-central-vertical","posicao":45,"conexao":[55]},{"elemento":"linha-central-vertical","posicao":35,"conexao":[45]},{"elemento":"linha-central-vertical","posicao":25,"conexao":[35]},{"elemento":"linha-central-vertical","posicao":15,"conexao":[25]},{"elemento":"linha-central-vertical","posicao":5,"conexao":[15]},{"elemento":"linha-central-horizontal","posicao":133,"conexao":[134]},{"elemento":"linha-central-horizontal","posicao":132,"conexao":[133]},{"elemento":"segundo-canto","posicao":131,"conexao":[132]},{"elemento":"linha-central-vertical","posicao":121,"conexao":[131]},{"elemento":"linha-central-vertical","posicao":111,"conexao":[121]},{"elemento":"terceiro-canto","posicao":101,"conexao":[111]},{"elemento":"linha-central-horizontal","posicao":102,"conexao":[101]},{"elemento":"primeiro-canto","posicao":103,"conexao":[102]},{"elemento":"linha-central-vertical","posicao":93,"conexao":[103]},{"elemento":"linha-central-vertical","posicao":83,"conexao":[93]},{"elemento":"linha-central-vertical","posicao":73,"conexao":[83]},{"elemento":"linha-central-vertical","posicao":63,"conexao":[73]},{"elemento":"linha-central-vertical","posicao":53,"conexao":[63]},{"elemento":"linha-central-vertical","posicao":43,"conexao":[53]},{"elemento":"linha-central-vertical","posicao":33,"conexao":[43]},{"elemento":"linha-central-vertical","posicao":23,"conexao":[33]},{"elemento":"linha-central-vertical","posicao":13,"conexao":[23]},{"elemento":"linha-central-vertical","posicao":3,"conexao":[13]},{"elemento":"linha-central-vertical","posicao":147,"conexao":[]},{"elemento":"linha-central-vertical","posicao":137,"conexao":[147]},{"elemento":"linha-central-vertical","posicao":127,"conexao":[137]},{"elemento":"linha-central-vertical","posicao":117,"conexao":[127]},{"elemento":"linha-central-vertical","posicao":107,"conexao":[117]},{"elemento":"linha-central-vertical","posicao":97,"conexao":[107]},{"elemento":"cruz-quebrada-direita","posicao":87,"conexao":[97]},{"elemento":"linha-central-vertical","posicao":77,"conexao":[87]},{"elemento":"linha-central-vertical","posicao":67,"conexao":[77]},{"elemento":"linha-central-vertical","posicao":57,"conexao":[67]},{"elemento":"linha-central-vertical","posicao":47,"conexao":[57]},{"elemento":"linha-central-vertical","posicao":37,"conexao":[47]},{"elemento":"linha-central-vertical","posicao":27,"conexao":[37]},{"elemento":"linha-central-vertical","posicao":17,"conexao":[27]},{"elemento":"linha-central-vertical","posicao":7,"conexao":[17]},{"elemento":"primeiro-canto","posicao":88,"conexao":[87]},{"elemento":"linha-central-vertical","posicao":78,"conexao":[88]},{"elemento":"linha-central-vertical","posicao":68,"conexao":[78]},{"elemento":"linha-central-vertical","posicao":58,"conexao":[68]},{"elemento":"linha-central-vertical","posicao":48,"conexao":[58]},{"elemento":"linha-central-vertical","posicao":38,"conexao":[48]},{"elemento":"linha-central-vertical","posicao":28,"conexao":[38]},{"elemento":"linha-central-vertical","posicao":18,"conexao":[28]},{"elemento":"linha-central-vertical","posicao":8,"conexao":[18]}],"posicaoElementosIniciais":[144,147],"solucoesPossiveis":[["0","0","0","0","1","0","0","1","0","0"]]}',
+
         	// Fase 3
         	'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"linha-central-vertical","posicao":135,"conexao":[145]},{"elemento":"linha-central-vertical","posicao":125,"conexao":[135]},{"elemento":"linha-central-vertical","posicao":115,"conexao":[125]},{"elemento":"not","posicao":105,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":95,"conexao":[105]},{"elemento":"linha-central-vertical","posicao":85,"conexao":[95]},{"elemento":"linha-central-vertical","posicao":75,"conexao":[85]},{"elemento":"linha-central-vertical","posicao":65,"conexao":[75]},{"elemento":"linha-central-vertical","posicao":55,"conexao":[65]},{"elemento":"linha-central-vertical","posicao":45,"conexao":[55]},{"elemento":"linha-central-vertical","posicao":35,"conexao":[45]},{"elemento":"linha-central-vertical","posicao":25,"conexao":[35]},{"elemento":"linha-central-vertical","posicao":15,"conexao":[25]},{"elemento":"linha-central-vertical","posicao":5,"conexao":[15]}],"posicaoElementosIniciais":[145],"solucoesPossiveis":[["0","0","0","0","0","0","0","0","0","0"]]}',
         	// Fase 4
@@ -123,7 +181,15 @@ btnJogar.addEventListener('click', () => {
             '{"listaElementos":[{"elemento":"linha-central-vertical","posicao":142,"conexao":[]},{"elemento":"linha-central-vertical","posicao":143,"conexao":[]},{"elemento":"or","posicao":132,"conexao":[142,143]},{"elemento":"linha-recentralizadora-direita","posicao":123,"conexao":[132]},{"elemento":"linha-central-vertical","posicao":113,"conexao":[123]},{"elemento":"linha-central-vertical","posicao":103,"conexao":[113]},{"elemento":"linha-central-vertical","posicao":93,"conexao":[103]},{"elemento":"linha-central-vertical","posicao":83,"conexao":[93]},{"elemento":"linha-central-vertical","posicao":73,"conexao":[83]},{"elemento":"linha-central-vertical","posicao":63,"conexao":[73]},{"elemento":"linha-central-vertical","posicao":53,"conexao":[63]},{"elemento":"linha-central-vertical","posicao":43,"conexao":[53]},{"elemento":"linha-central-vertical","posicao":33,"conexao":[43]},{"elemento":"linha-central-vertical","posicao":23,"conexao":[33]},{"elemento":"linha-central-vertical","posicao":13,"conexao":[23]},{"elemento":"linha-central-vertical","posicao":3,"conexao":[13]},{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"linha-central-vertical","posicao":146,"conexao":[]},{"elemento":"not","posicao":135,"conexao":[145]},{"elemento":"linha-central-vertical","posicao":136,"conexao":[146]},{"elemento":"linha-central-vertical","posicao":125,"conexao":[135]},{"elemento":"linha-central-vertical","posicao":126,"conexao":[136]},{"elemento":"and","posicao":115,"conexao":[125,126]},{"elemento":"linha-recentralizadora-direita","posicao":106,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":96,"conexao":[106]},{"elemento":"linha-central-vertical","posicao":86,"conexao":[96]},{"elemento":"linha-central-vertical","posicao":76,"conexao":[86]},{"elemento":"linha-central-vertical","posicao":66,"conexao":[76]},{"elemento":"linha-central-vertical","posicao":56,"conexao":[66]},{"elemento":"linha-central-vertical","posicao":46,"conexao":[56]},{"elemento":"linha-central-vertical","posicao":36,"conexao":[46]},{"elemento":"linha-central-vertical","posicao":26,"conexao":[36]},{"elemento":"linha-central-vertical","posicao":16,"conexao":[26]},{"elemento":"linha-central-vertical","posicao":6,"conexao":[16]}],"posicaoElementosIniciais":[142,143,145,146],"solucoesPossiveis":[["0","0","0","1","0","0","1","0","0","0"],["0","0","1","0","0","0","1","0","0","0"],["0","0","1","1","0","0","1","0","0","0"]]}'
         ];
     } else if (modoJogo === 'treino') {
-
+    	circuitosFeitos = [
+    	'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"linha-central-vertical","posicao":135,"conexao":[145]},{"elemento":"linha-central-vertical","posicao":125,"conexao":[135]},{"elemento":"linha-central-vertical","posicao":115,"conexao":[125]},{"elemento":"not","posicao":105,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":95,"conexao":[105]},{"elemento":"linha-central-vertical","posicao":85,"conexao":[95]},{"elemento":"linha-central-vertical","posicao":75,"conexao":[85]},{"elemento":"linha-central-vertical","posicao":65,"conexao":[75]},{"elemento":"linha-central-vertical","posicao":55,"conexao":[65]},{"elemento":"linha-central-vertical","posicao":45,"conexao":[55]},{"elemento":"linha-central-vertical","posicao":35,"conexao":[45]},{"elemento":"linha-central-vertical","posicao":25,"conexao":[35]},{"elemento":"linha-central-vertical","posicao":15,"conexao":[25]},{"elemento":"linha-central-vertical","posicao":5,"conexao":[15]}],"posicaoElementosIniciais":[145],"solucoesPossiveis":[["0","0","0","0","0","0","0","0","0","0"]]}',
+		'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":144,"conexao":[]},{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"and","posicao":134,"conexao":[144,145]},{"elemento":"linha-recentralizadora-direita","posicao":125,"conexao":[134]},{"elemento":"linha-central-vertical","posicao":115,"conexao":[125]},{"elemento":"linha-central-vertical","posicao":105,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":95,"conexao":[105]},{"elemento":"linha-central-vertical","posicao":85,"conexao":[95]},{"elemento":"linha-central-vertical","posicao":75,"conexao":[85]},{"elemento":"linha-central-vertical","posicao":65,"conexao":[75]},{"elemento":"linha-central-vertical","posicao":55,"conexao":[65]},{"elemento":"linha-central-vertical","posicao":45,"conexao":[55]},{"elemento":"linha-central-vertical","posicao":35,"conexao":[45]},{"elemento":"linha-central-vertical","posicao":25,"conexao":[35]},{"elemento":"linha-central-vertical","posicao":15,"conexao":[25]},{"elemento":"linha-central-vertical","posicao":5,"conexao":[15]}],"posicaoElementosIniciais":[144,145],"solucoesPossiveis":[["0","0","0","0","1","1","0","0","0","0"]]}',
+		'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":144,"conexao":[]},{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"or","posicao":134,"conexao":[144,145]},{"elemento":"linha-recentralizadora-esquerda","posicao":124,"conexao":[134]},{"elemento":"linha-central-vertical","posicao":114,"conexao":[124]},{"elemento":"linha-central-vertical","posicao":104,"conexao":[114]},{"elemento":"linha-central-vertical","posicao":94,"conexao":[104]},{"elemento":"linha-central-vertical","posicao":84,"conexao":[94]},{"elemento":"linha-central-vertical","posicao":74,"conexao":[84]},{"elemento":"linha-central-vertical","posicao":64,"conexao":[74]},{"elemento":"linha-central-vertical","posicao":54,"conexao":[64]},{"elemento":"linha-central-vertical","posicao":44,"conexao":[54]},{"elemento":"linha-central-vertical","posicao":34,"conexao":[44]},{"elemento":"linha-central-vertical","posicao":24,"conexao":[34]},{"elemento":"linha-central-vertical","posicao":14,"conexao":[24]},{"elemento":"linha-central-vertical","posicao":4,"conexao":[14]}],"posicaoElementosIniciais":[144,145],"solucoesPossiveis":[["0","0","0","0","0","1","0","0","0","0"],["0","0","0","0","1","0","0","0","0","0"],["0","0","0","0","1","1","0","0","0","0"]]}',
+		'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":144,"conexao":[]},{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"nand","posicao":134,"conexao":[144,145]},{"elemento":"linha-recentralizadora-direita","posicao":125,"conexao":[134]},{"elemento":"linha-central-vertical","posicao":115,"conexao":[125]},{"elemento":"linha-central-vertical","posicao":105,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":95,"conexao":[105]},{"elemento":"linha-central-vertical","posicao":85,"conexao":[95]},{"elemento":"linha-central-vertical","posicao":75,"conexao":[85]},{"elemento":"linha-central-vertical","posicao":65,"conexao":[75]},{"elemento":"linha-central-vertical","posicao":55,"conexao":[65]},{"elemento":"linha-central-vertical","posicao":45,"conexao":[55]},{"elemento":"linha-central-vertical","posicao":35,"conexao":[45]},{"elemento":"linha-central-vertical","posicao":25,"conexao":[35]},{"elemento":"linha-central-vertical","posicao":15,"conexao":[25]},{"elemento":"linha-central-vertical","posicao":5,"conexao":[15]}],"posicaoElementosIniciais":[144,145],"solucoesPossiveis":[["0","0","0","0","1","0","0","0","0","0"],["0","0","0","0","0","1","0","0","0","0"],["0","0","0","0","0","0","0","0","0","0"]]}',
+		'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":144,"conexao":[]},{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"xor","posicao":134,"conexao":[144,145]},{"elemento":"linha-recentralizadora-direita","posicao":125,"conexao":[134]},{"elemento":"linha-central-vertical","posicao":115,"conexao":[125]},{"elemento":"linha-central-vertical","posicao":105,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":95,"conexao":[105]},{"elemento":"linha-central-vertical","posicao":85,"conexao":[95]},{"elemento":"linha-central-vertical","posicao":75,"conexao":[85]},{"elemento":"linha-central-vertical","posicao":65,"conexao":[75]},{"elemento":"linha-central-vertical","posicao":55,"conexao":[65]},{"elemento":"linha-central-vertical","posicao":45,"conexao":[55]},{"elemento":"linha-central-vertical","posicao":35,"conexao":[45]},{"elemento":"linha-central-vertical","posicao":25,"conexao":[35]},{"elemento":"linha-central-vertical","posicao":15,"conexao":[25]},{"elemento":"linha-central-vertical","posicao":5,"conexao":[15]}],"posicaoElementosIniciais":[144,145],"solucoesPossiveis":[["0","0","0","0","0","1","0","0","0","0"],["0","0","0","0","1","0","0","0","0","0"]]}',
+		'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":144,"conexao":[]},{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"nor","posicao":134,"conexao":[144,145]},{"elemento":"linha-recentralizadora-direita","posicao":125,"conexao":[134]},{"elemento":"linha-central-vertical","posicao":115,"conexao":[125]},{"elemento":"linha-central-vertical","posicao":105,"conexao":[115]},{"elemento":"linha-central-vertical","posicao":95,"conexao":[105]},{"elemento":"linha-central-vertical","posicao":85,"conexao":[95]},{"elemento":"linha-central-vertical","posicao":75,"conexao":[85]},{"elemento":"linha-central-vertical","posicao":65,"conexao":[75]},{"elemento":"linha-central-vertical","posicao":55,"conexao":[65]},{"elemento":"linha-central-vertical","posicao":45,"conexao":[55]},{"elemento":"linha-central-vertical","posicao":35,"conexao":[45]},{"elemento":"linha-central-vertical","posicao":25,"conexao":[35]},{"elemento":"linha-central-vertical","posicao":15,"conexao":[25]},{"elemento":"linha-central-vertical","posicao":5,"conexao":[15]}],"posicaoElementosIniciais":[144,145],"solucoesPossiveis":[["0","0","0","0","0","0","0","0","0","0"]]}',
+		'{"listaElementos":[{"elemento":"linha-central-vertical","posicao":144,"conexao":[]},{"elemento":"linha-central-vertical","posicao":145,"conexao":[]},{"elemento":"xnor","posicao":134,"conexao":[144,145]},{"elemento":"linha-recentralizadora-esquerda","posicao":124,"conexao":[134]},{"elemento":"linha-central-vertical","posicao":114,"conexao":[124]},{"elemento":"linha-central-vertical","posicao":104,"conexao":[114]},{"elemento":"linha-central-vertical","posicao":94,"conexao":[104]},{"elemento":"linha-central-vertical","posicao":84,"conexao":[94]},{"elemento":"linha-central-vertical","posicao":74,"conexao":[84]},{"elemento":"linha-central-vertical","posicao":64,"conexao":[74]},{"elemento":"linha-central-vertical","posicao":54,"conexao":[64]},{"elemento":"linha-central-vertical","posicao":44,"conexao":[54]},{"elemento":"linha-central-vertical","posicao":34,"conexao":[44]},{"elemento":"linha-central-vertical","posicao":24,"conexao":[34]},{"elemento":"linha-central-vertical","posicao":14,"conexao":[24]},{"elemento":"linha-central-vertical","posicao":4,"conexao":[14]}],"posicaoElementosIniciais":[144,145],"solucoesPossiveis":[["0","0","0","0","0","0","0","0","0","0"],["0","0","0","0","1","1","0","0","0","0"]]}'
+	];
     } else {
 
     }
@@ -188,7 +254,7 @@ btnProximo.addEventListener('click', () => {
                 fimJogo = true;
             }
         }
-    } else if (modoJogo === 'infinito') {
+    } else {
         circuitoAtual = getRandomIntInclusive(0, circuitosFeitos.length - 1);
     }
 
@@ -235,19 +301,30 @@ function colocaEstrelas(qtde, vazias = false) {
 
 function exibeEstrelas() {
 	let qtdeCliques = qtdeInicialBateria - qtdeBateria;
-	let qtdeSolucaoPerfeita = qtdeInicialBateria - 2;
 	let totalEstrelas = 0;
 
-	if (tempoCorrente >= 0) {
+	let percentual = (tempoCorrente / tempoInicial) * 100;
+
+	if (percentual >= 30) {
 		totalEstrelas += 1;
-	} if (tempoCorrente >= 10) {
+	} if (percentual >= 40) {
 		totalEstrelas += 1;
-	} if (tempoCorrente >= 15) {
+	} if (percentual >= 50) {
 		totalEstrelas += 1;
-	} if (tempoCorrente >= 20) {
+	} if (percentual >= 75) {
 		totalEstrelas += 1;
-	} if (tempoCorrente >= 25) {
+	} if (percentual >= 90) {
 		totalEstrelas += 1;
+	}
+
+	if (dificuldade == 'normal') {
+		if (qtdeCliques >= qtdeInicialBateria) {
+			totalEstrelas--;
+		}
+	} else {
+		if (qtdeCliques > qtdeInicialBateria) {
+			totalEstrelas--;
+		}
 	}
 
 	if (totalEstrelas === 5) {
@@ -321,6 +398,10 @@ function defineBateria(estadoInicial, solucaoPerfeita) {
         bonus = 0;
     }
 
+    if (modoJogo === 'treino') {
+    	bonus += 100;
+    }
+
 	return total + bonus;
 }
 
@@ -383,6 +464,20 @@ function estadosIguais(estadoInicial, solucaoPerfeita) {
     return iguais;
 }
 
+function pegaMenorValor(lista) {
+	let menor = Number.POSITIVE_INFINITY;
+
+	console.log(lista);
+
+	for (let i = 0; i < lista.length; i++) {
+		if (lista[i] < menor) {
+			menor = lista[i];
+		}
+	}
+
+	return menor;
+}
+
 function criaEstadoInicial(solucoesPossiveis, posicaoElementosIniciais) {
     let estadoInicial = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'];
 
@@ -404,7 +499,15 @@ function criaEstadoInicial(solucoesPossiveis, posicaoElementosIniciais) {
         }
     }
 
-    return estadoInicial;
+
+    let quantidadesBaterias = [];
+    for (let i = 0; i < solucoesPossiveis.length; i++) {
+    	quantidadesBaterias.push(defineBateria(estadoInicial, solucoesPossiveis[i]));
+    }
+
+    let quantidadeBateria = pegaMenorValor(quantidadesBaterias);
+
+    return [estadoInicial, quantidadeBateria];
 }
 
 function limpaCircuito() {
@@ -420,12 +523,9 @@ function leCircuito(circuitoJSON) {
 	circuitosPassados++;
 	limpaCircuito();
 	tempoCorrente = tempoInicial;
-
-    let estadoInicial = criaEstadoInicial(circuitoJSON.solucoesPossiveis, circuitoJSON.posicaoElementosIniciais);
-
-    let posicaoAleatoriaSolucaoPerfeita = getRandomIntInclusive(0, circuitoJSON.solucoesPossiveis.length - 1);
-
-    qtdeBateria = defineBateria(estadoInicial, circuitoJSON.solucoesPossiveis[posicaoAleatoriaSolucaoPerfeita]);
+	let resultadoCriacaoEstadoInicial = criaEstadoInicial(circuitoJSON.solucoesPossiveis, circuitoJSON.posicaoElementosIniciais);
+    let estadoInicial = resultadoCriacaoEstadoInicial[0];
+    qtdeBateria = resultadoCriacaoEstadoInicial[1]
     defineInputsCircuito(JSON.stringify(estadoInicial));
 	qtdeInicialBateria = qtdeBateria;
 	bateria.innerText = qtdeBateria;
@@ -619,18 +719,10 @@ for (let i = 0; i < inputs.length; i++) {
 				const music = new Audio('efeitos-sonoros/1.wav'); music.play(); music.loop =false;
 				inputs[i].innerText = '1';
 				inputs[i].style.setProperty('color', 'seagreen');
-				if (espacosElementos[i + 140].classList.contains('elementoPresente')) {
-					espacosElementos[i + 140].classList.add('on');
-					espacosElementos[i + 140].style.backgroundImage = 'url("elementos/linha-central-vertical-on.png")';
-				}
 			} else if (inputs[i].innerText === '1') {
 				const music = new Audio('efeitos-sonoros/0.wav'); music.play(); music.loop =false;
 				inputs[i].style.setProperty('color', 'tomato');
 				inputs[i].innerText = '0';
-				if (espacosElementos[i + 140].classList.contains('elementoPresente')) {
-					espacosElementos[i + 140].classList.remove('on');
-					espacosElementos[i + 140].style.backgroundImage = 'url("elementos/linha-central-vertical.png")';
-				}
 			}
 			atualizaBateria();
 			propaga(JSON.parse(circuitosFeitos[circuitoAtual]).listaElementos);
